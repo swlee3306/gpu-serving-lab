@@ -1,0 +1,10 @@
+ready
+idle: util.gpu,util.mem,power,smclk,memclk = 0, 0, 46.85, 2655, 10251
+c4 {"n": 48, "c": 4, "wall_s": 17.4, "tok_s": 354, "p50": 1.43, "p95": 1.59}
+   샘플 35개 평균: util.gpu=94% util.mem=94% power=183W smclk=2830MHz
+c1 {"n": 24, "c": 1, "wall_s": 33.7, "tok_s": 91, "p50": 1.4, "p95": 1.4}
+   샘플 68개 평균: util.gpu=98% util.mem=99% power=211W smclk=2821MHz
+c16 {"n": 160, "c": 16, "wall_s": 14.8, "tok_s": 1387, "p50": 1.46, "p95": 1.58}
+   샘플 30개 평균: util.gpu=97% util.mem=97% power=202W smclk=2820MHz
+c64 {"n": 400, "c": 64, "wall_s": 12.0, "tok_s": 4275, "p50": 1.71, "p95": 2.01}
+   샘플 25개 평균: util.gpu=95% util.mem=94% power=215W smclk=2820MHz

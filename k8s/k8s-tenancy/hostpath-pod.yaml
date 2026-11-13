@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata: {name: hostpath-probe, namespace: tenant-a}
+spec:
+  nodeSelector: {gpu: "true"}
+  restartPolicy: Never
+  containers:
+  - name: c
+    image: busybox:1.36
+    command: ["sh","-c","echo 호스트 파일을 읽음: $(cat /host-hostname)"]
+    volumeMounts: [{name: h, mountPath: /host-hostname, readOnly: true}]
+  volumes: [{name: h, hostPath: {path: /etc/hostname, type: File}}]

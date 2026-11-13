@@ -1,0 +1,402 @@
+---
+# Source: nvidia-device-plugin/templates/service-account.yml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nvdp-nvidia-device-plugin-service-account
+  namespace: kube-system
+  labels:
+    helm.sh/chart: nvidia-device-plugin-0.20.1
+    app.kubernetes.io/name: nvidia-device-plugin
+    app.kubernetes.io/instance: nvdp
+    app.kubernetes.io/version: "0.20.1"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: nvidia-device-plugin/templates/configmap.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nvdp-nvidia-device-plugin-configs
+  namespace: kube-system
+  labels:
+    helm.sh/chart: nvidia-device-plugin-0.20.1
+    app.kubernetes.io/name: nvidia-device-plugin
+    app.kubernetes.io/instance: nvdp
+    app.kubernetes.io/version: "0.20.1"
+    app.kubernetes.io/managed-by: Helm
+data:
+  mps: |-
+    version: v1
+    sharing:
+      mps:
+        resources:
+        - name: nvidia.com/gpu
+          replicas: 2
+---
+# Source: nvidia-device-plugin/templates/role.yml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: nvdp-nvidia-device-plugin-role
+  labels:
+    helm.sh/chart: nvidia-device-plugin-0.20.1
+    app.kubernetes.io/name: nvidia-device-plugin
+    app.kubernetes.io/instance: nvdp
+    app.kubernetes.io/version: "0.20.1"
+    app.kubernetes.io/managed-by: Helm
+rules:
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list", "watch"]
+---
+# Source: nvidia-device-plugin/templates/role-binding.yml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: nvdp-nvidia-device-plugin-role-binding
+  labels:
+    helm.sh/chart: nvidia-device-plugin-0.20.1
+    app.kubernetes.io/name: nvidia-device-plugin
+    app.kubernetes.io/instance: nvdp
+    app.kubernetes.io/version: "0.20.1"
+    app.kubernetes.io/managed-by: Helm
+subjects:
+  - kind: ServiceAccount
+    name: nvdp-nvidia-device-plugin-service-account
+    namespace: kube-system
+roleRef:
+  kind: ClusterRole
+  name: nvdp-nvidia-device-plugin-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# Source: nvidia-device-plugin/templates/daemonset-device-plugin.yml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nvdp-nvidia-device-plugin
+  namespace: kube-system
+  labels:
+    helm.sh/chart: nvidia-device-plugin-0.20.1
+    app.kubernetes.io/name: nvidia-device-plugin
+    app.kubernetes.io/instance: nvdp
+    app.kubernetes.io/version: "0.20.1"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: nvidia-device-plugin
+      app.kubernetes.io/instance: nvdp
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: nvidia-device-plugin
+        app.kubernetes.io/instance: nvdp
+      annotations:
+        checksum/config: 7adac78c920ba37427035774c2ffe3665631010fd3149329e724004d774363b6
+    spec:
+      priorityClassName: system-node-critical
+      runtimeClassName: nvidia
+      securityContext:
+        {}
+      serviceAccountName: nvdp-nvidia-device-plugin-service-account
+      shareProcessNamespace: true
+      initContainers:
+      - image: nvcr.io/nvidia/k8s-device-plugin:v0.20.1
+        name: nvidia-device-plugin-init
+        command: ["config-manager"]
+        env:
+        - name: ONESHOT
+          value: "true"
+        - name: KUBECONFIG
+          value: ""
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: "spec.nodeName"
+        - name: NODE_LABEL
+          value: "nvidia.com/device-plugin.config"
+        - name: CONFIG_FILE_SRCDIR
+          value: "/available-configs"
+        - name: CONFIG_FILE_DST
+          value: "/config/config.yaml"
+        - name: DEFAULT_CONFIG
+          value: mps
+        - name: FALLBACK_STRATEGIES
+          value: named,single
+        - name: SEND_SIGNAL
+          value: "false"
+        - name: SIGNAL
+          value: ""
+        - name: PROCESS_TO_SIGNAL
+          value: ""
+        volumeMounts:
+          - name: available-configs
+            mountPath: /available-configs
+          - name: config
+            mountPath: /config
+      containers:
+      - image: nvcr.io/nvidia/k8s-device-plugin:v0.20.1
+        name: nvidia-device-plugin-sidecar
+        command: ["config-manager"]
+        env:
+        - name: ONESHOT
+          value: "false"
+        - name: KUBECONFIG
+          value: ""
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: "spec.nodeName"
+        - name: NODE_LABEL
+          value: "nvidia.com/device-plugin.config"
+        - name: CONFIG_FILE_SRCDIR
+          value: "/available-configs"
+        - name: CONFIG_FILE_DST
+          value: "/config/config.yaml"
+        - name: DEFAULT_CONFIG
+          value: mps
+        - name: FALLBACK_STRATEGIES
+          value: named,single
+        - name: SEND_SIGNAL
+          value: "true"
+        - name: SIGNAL
+          value: "1" # SIGHUP
+        - name: PROCESS_TO_SIGNAL
+          value: "nvidia-device-plugin"
+        volumeMounts:
+          - name: available-configs
+            mountPath: /available-configs
+          - name: config
+            mountPath: /config
+        securityContext:
+          capabilities:
+            add:
+              - SYS_ADMIN
+      - image: nvcr.io/nvidia/k8s-device-plugin:v0.20.1
+        imagePullPolicy: IfNotPresent
+        name: nvidia-device-plugin-ctr
+        command: ["nvidia-device-plugin"]
+        env:
+          - name: MPS_ROOT
+            value: /run/nvidia/mps
+          - name: CONFIG_FILE
+            value: /config/config.yaml
+          - name: NVIDIA_MIG_MONITOR_DEVICES
+            value: all
+          - name: NVIDIA_VISIBLE_DEVICES
+            value: all
+          - name: NVIDIA_DRIVER_CAPABILITIES
+            value: compute,utility
+        securityContext:
+          capabilities:
+            add:
+              - SYS_ADMIN
+        volumeMounts:
+          - name: kubelet-device-plugins-dir
+            mountPath: /var/lib/kubelet/device-plugins
+          # The MPS /dev/shm is needed to allow for MPS daemon health-checking.
+          - name: mps-shm
+            mountPath: /dev/shm
+          - name: mps-root
+            mountPath: /mps
+          - name: cdi-root
+            mountPath: /var/run/cdi
+          - name: available-configs
+            mountPath: /available-configs
+          - name: config
+            mountPath: /config
+      volumes:
+        - name: kubelet-device-plugins-dir
+          hostPath:
+            path: /var/lib/kubelet/device-plugins
+            type: Directory
+        - name: mps-root
+          hostPath:
+            path: /run/nvidia/mps
+            type: DirectoryOrCreate
+        - name: mps-shm
+          hostPath:
+            path: /run/nvidia/mps/shm
+        - name: cdi-root
+          hostPath:
+            path: /var/run/cdi
+            type: DirectoryOrCreate
+        - name: available-configs
+          configMap:
+            name: nvdp-nvidia-device-plugin-configs
+        - name: config
+          emptyDir: {}
+      nodeSelector:
+        gpu: "true"
+      tolerations:
+        - key: CriticalAddonsOnly
+          operator: Exists
+        - effect: NoSchedule
+          key: nvidia.com/gpu
+          operator: Exists
+---
+# Source: nvidia-device-plugin/templates/daemonset-mps-control-daemon.yml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nvdp-nvidia-device-plugin-mps-control-daemon
+  namespace: kube-system
+  labels:
+    helm.sh/chart: nvidia-device-plugin-0.20.1
+    app.kubernetes.io/name: nvidia-device-plugin
+    app.kubernetes.io/instance: nvdp
+    app.kubernetes.io/version: "0.20.1"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: nvidia-device-plugin
+      app.kubernetes.io/instance: nvdp
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: nvidia-device-plugin
+        app.kubernetes.io/instance: nvdp
+      annotations:
+        checksum/config: 7adac78c920ba37427035774c2ffe3665631010fd3149329e724004d774363b6
+    spec:
+      priorityClassName: system-node-critical
+      runtimeClassName: nvidia
+      securityContext:
+        {}
+      serviceAccountName: nvdp-nvidia-device-plugin-service-account
+      hostPID: true
+      initContainers:
+      - image: nvcr.io/nvidia/k8s-device-plugin:v0.20.1
+        name: mps-control-daemon-mounts
+        command: [mps-control-daemon, mount-shm]
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: mps-root
+          mountPath: /mps
+          mountPropagation: Bidirectional
+      - image: nvcr.io/nvidia/k8s-device-plugin:v0.20.1
+        name: mps-control-daemon-init
+        command: ["config-manager"]
+        env:
+        - name: ONESHOT
+          value: "true"
+        - name: KUBECONFIG
+          value: ""
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: "spec.nodeName"
+        - name: NODE_LABEL
+          value: "nvidia.com/device-plugin.config"
+        - name: CONFIG_FILE_SRCDIR
+          value: "/available-configs"
+        - name: CONFIG_FILE_DST
+          value: "/config/config.yaml"
+        - name: DEFAULT_CONFIG
+          value: mps
+        - name: FALLBACK_STRATEGIES
+          value: named,single
+        - name: SEND_SIGNAL
+          value: "false"
+        - name: SIGNAL
+          value: ""
+        - name: PROCESS_TO_SIGNAL
+          value: ""
+        volumeMounts:
+          - name: available-configs
+            mountPath: /available-configs
+          - name: config
+            mountPath: /config
+      containers:
+        # TODO: How do we synchronize the plugin and control-daemon on restart.
+        - image: nvcr.io/nvidia/k8s-device-plugin:v0.20.1
+          name: mps-control-daemon-sidecar
+          command: ["config-manager"]
+          env:
+          - name: ONESHOT
+            value: "false"
+          - name: KUBECONFIG
+            value: ""
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: "spec.nodeName"
+          - name: NODE_LABEL
+            value: "nvidia.com/device-plugin.config"
+          - name: CONFIG_FILE_SRCDIR
+            value: "/available-configs"
+          - name: CONFIG_FILE_DST
+            value: "/config/config.yaml"
+          - name: DEFAULT_CONFIG
+            value: mps
+          - name: FALLBACK_STRATEGIES
+            value: named,single
+          - name: SEND_SIGNAL
+            value: "true"
+          - name: SIGNAL
+            value: "1"
+          - name: PROCESS_TO_SIGNAL
+            value: "/usr/bin/mps-control-daemon"
+          volumeMounts:
+            - name: available-configs
+              mountPath: /available-configs
+            - name: config
+              mountPath: /config
+        - image: nvcr.io/nvidia/k8s-device-plugin:v0.20.1
+          imagePullPolicy: IfNotPresent
+          name: mps-control-daemon-ctr
+          command: [mps-control-daemon]
+          env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          - name: CONFIG_FILE
+            value: /config/config.yaml
+          - name: NVIDIA_MIG_MONITOR_DEVICES
+            value: all
+          - name: NVIDIA_VISIBLE_DEVICES
+            value: all
+          - name: NVIDIA_DRIVER_CAPABILITIES
+            value: compute,utility
+          securityContext:
+            privileged: true
+          volumeMounts:
+          - name: mps-shm
+            mountPath: /dev/shm
+          - name: mps-root
+            mountPath: /mps
+          - name: available-configs
+            mountPath: /available-configs
+          - name: config
+            mountPath: /config
+      volumes:
+      - name: mps-root
+        hostPath:
+          path: /run/nvidia/mps
+          type: DirectoryOrCreate
+      - name: mps-shm
+        hostPath:
+          path: /run/nvidia/mps/shm
+      - name: available-configs
+        configMap:
+          name: nvdp-nvidia-device-plugin-configs
+      - name: config
+        emptyDir: {}
+      nodeSelector:
+        # We only deploy this pod if the following sharing label is applied.
+        nvidia.com/mps.capable: "true"
+        gpu: "true"
+      tolerations:
+        - key: CriticalAddonsOnly
+          operator: Exists
+        - effect: NoSchedule
+          key: nvidia.com/gpu
+          operator: Exists

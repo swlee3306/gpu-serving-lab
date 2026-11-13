@@ -1,0 +1,21 @@
+# dmesg (Xid)
+[Thu Oct 29 16:13:33 2026] r8169 0000:08:00.0 eth0: RTL8125B, aa:bb:cc:dd:ee:ff, XID 641, IRQ 47
+[Tue Nov  3 15:06:22 2026] NVRM: Xid (PCI:0000:01:00): 31, pid=1404799, name=VLLM::EngineCor, channel 0x0000000b, intr 00000000. MMU Fault: ENGINE GRAPHICS GPC3 GPCCLIENT_GCC faulted @ 0x73b9_8f227000. Fault is of type FAULT_PDE ACCESS_TYPE_VIRT_READ
+
+# MPS server.log (fatal GPU error 구간, 77~92행)
+[2026-11-03 15:06:33.643 Server 1404882] Client {PID: 1404799, Context: 1} encountered a fatal GPU error.
+[2026-11-03 15:06:33.643 Server 1404882] Server is handling a fatal GPU error.
+[2026-11-03 15:06:33.643 Server 1404882] Client {PID: 1404799, Context ID: 1} on device 0 to be torn down
+[2026-11-03 15:06:33.643 Server 1404882] All clients belonging to error trigging process 1404799 will be torn down
+[2026-11-03 15:06:33.643 Server 1404882] Client {PID: 1404799, Context ID: 1} on the error-trigging process 1404799 to be torn down
+[2026-11-03 15:06:33.643 Server 1404882] The following devices will be reset:
+[2026-11-03 15:06:33.643 Server 1404882] 0
+[2026-11-03 15:06:33.643 Server 1404882] The following client process have a sticky error set:
+[2026-11-03 15:06:33.643 Server 1404882] 1404799
+[2026-11-03 15:06:33.666 Server 1404882] Server failed to recevie command with status 806, assuming client {PID: 1408366, Context ID: 0} exit
+[2026-11-03 15:06:33.666 Server 1404882] Client process 1408366 disconnected
+[2026-11-03 15:06:38.987 Server 1404882] Received new client request for {PID: 1408366, Context ID: 1}
+[2026-11-03 15:06:38.987 Server 1404882] Server teardown in progress. Refusing to accept new client {PID: 1408804, Context ID: 0}
+[2026-11-03 15:06:38.987 Server 1404882] Failed to accept client {PID: 1408804, Context ID: 0} with status 807
+[2026-11-03 15:06:48.560 Server 1404882] Server failed to recevie command with status 806, assuming client {PID: 1404799, Context ID: 1} exit
+[2026-11-03 15:06:48.560 Server 1404882] Client {PID: 1404799, Context ID: 1} exiting. Number of active client contexts is 0.

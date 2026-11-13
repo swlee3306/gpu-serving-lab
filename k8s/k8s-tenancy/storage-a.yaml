@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata: {name: hf-cache-a}
+spec:
+  capacity: {storage: 50Gi}
+  accessModes: [ReadWriteOnce]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  local: {path: /data/models/hf}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions: [{key: kubernetes.io/hostname, operator: In, values: [gpu-server]}]
+  claimRef: {namespace: tenant-a, name: hf-cache}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: {name: hf-cache, namespace: tenant-a}
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: ""
+  volumeName: hf-cache-a
+  resources: {requests: {storage: 50Gi}}

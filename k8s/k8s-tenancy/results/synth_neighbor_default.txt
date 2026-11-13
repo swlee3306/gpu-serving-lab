@@ -1,0 +1,21 @@
+B ready; GPU 7348 MiB
+base1 {"n": 48, "c": 4, "wall_s": 17.4, "tok_s": 354, "p50": 1.43, "p95": 1.59}
+base2 {"n": 48, "c": 4, "wall_s": 17.2, "tok_s": 356, "p50": 1.43, "p95": 1.47}
+== pass fwd
+fwd-idle {"n": 48, "c": 4, "wall_s": 17.3, "tok_s": 356, "p50": 1.44, "p95": 1.49}
+fwd-copy100 {"n": 48, "c": 4, "wall_s": 35.7, "tok_s": 172, "p50": 2.97, "p95": 3.02}
+fwd-gemm100 {"n": 48, "c": 4, "wall_s": 38.6, "tok_s": 159, "p50": 3.21, "p95": 3.27}
+fwd-copy25 {"n": 48, "c": 4, "wall_s": 20.6, "tok_s": 298, "p50": 1.71, "p95": 1.77}
+fwd-gemm25 {"n": 48, "c": 4, "wall_s": 23.9, "tok_s": 257, "p50": 1.99, "p95": 2.03}
+== pass rev
+rev-gemm25 {"n": 48, "c": 4, "wall_s": 23.9, "tok_s": 257, "p50": 1.99, "p95": 2.03}
+rev-copy25 {"n": 48, "c": 4, "wall_s": 20.6, "tok_s": 298, "p50": 1.71, "p95": 1.78}
+rev-gemm100 {"n": 48, "c": 4, "wall_s": 38.6, "tok_s": 159, "p50": 3.22, "p95": 3.27}
+rev-copy100 {"n": 48, "c": 4, "wall_s": 35.7, "tok_s": 172, "p50": 2.97, "p95": 3.02}
+rev-idle {"n": 48, "c": 4, "wall_s": 17.3, "tok_s": 356, "p50": 1.44, "p95": 1.48}
+== neighbor-alone (이웃만 20초 단독 실행했을 때의 처리량, B 없이 아님: B는 유휴)
+copy duty=1.0: 평균 610 GB/s (벽시계 기준), 가동 중 610 GB/s
+gemm duty=1.0: 평균 90.9 TFLOP/s (벽시계 기준), 가동 중 90.5 TFLOP/s
+copy duty=0.25: 평균 172 GB/s (벽시계 기준), 가동 중 608 GB/s
+gemm duty=0.25: 평균 22.0 TFLOP/s (벽시계 기준), 가동 중 85.3 TFLOP/s
+FINISHED

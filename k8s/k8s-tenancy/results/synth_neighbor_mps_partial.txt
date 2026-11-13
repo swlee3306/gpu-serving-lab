@@ -1,0 +1,25 @@
+1404359 nvidia-cuda-mps-control -d
+B ready; GPU 7376 MiB
+base1 {"n": 48, "c": 4, "wall_s": 17.7, "tok_s": 348, "p50": 1.46, "p95": 1.62}
+base2 {"n": 48, "c": 4, "wall_s": 17.5, "tok_s": 350, "p50": 1.46, "p95": 1.49}
+== pass fwd
+fwd-idle {"n": 48, "c": 4, "wall_s": 17.6, "tok_s": 350, "p50": 1.46, "p95": 1.51}
+fwd-copy100 {"n": 48, "c": 4, "wall_s": 126.6, "tok_s": 49, "p50": 1.46, "p95": 96.61}
+fwd-gemm100 {"n": 48, "c": 4, "wall_s": 127.0, "tok_s": 48, "p50": 1.46, "p95": 110.94}
+fwd-copy25 {"n": 48, "c": 4, "wall_s": 24.4, "tok_s": 252, "p50": 2.03, "p95": 2.09}
+fwd-gemm25 {"n": 48, "c": 4, "wall_s": 27.3, "tok_s": 225, "p50": 2.28, "p95": 2.34}
+== pass rev
+urllib.error.HTTPError: HTTP Error 500: Internal Server Error
+Error response from daemon: No such container: vllm-b
+Error response from daemon: No such container: vllm-b
+Error response from daemon: No such container: vllm-b
+Error response from daemon: No such container: vllm-b
+== neighbor-alone (이웃만 20초 단독 실행했을 때의 처리량, B 없이 아님: B는 유휴)
+copy duty=1.0: 평균 610 GB/s (벽시계 기준), 가동 중 610 GB/s
+gemm duty=1.0: 평균 91.0 TFLOP/s (벽시계 기준), 가동 중 90.7 TFLOP/s
+copy duty=0.25: 평균 172 GB/s (벽시계 기준), 가동 중 608 GB/s
+gemm duty=0.25: 평균 23.0 TFLOP/s (벽시계 기준), 가동 중 86.1 TFLOP/s
+== MPS 서버 목록(종료 직전)
+1404882
+mps processes: none
+FINISHED

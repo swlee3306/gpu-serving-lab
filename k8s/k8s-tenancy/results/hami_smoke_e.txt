@@ -1,0 +1,27 @@
+== [메모리 한도 4g, 할당이 멈추는 지점]
+[memcheck] alloc: stopped after 3.75GiB -> OutOfMemoryError: CUDA out of memory. Tried to allocate 256.00 MiB. GPU 0 has a total capacity of 4.00 GiB o
+== [D] vLLM + HAMi-core (메모리 10g 한도, SM 한도 없음)
+vllm-d ready
+(EngineCore pid=152) INFO 11-03 15:21:49 [model_runner.py:424] Model loading took 5.79 GiB memory and 3.606604 seconds
+(EngineCore pid=152) INFO 11-03 15:22:04 [gpu_worker.py:759] Available KV cache memory: 1.72 GiB
+(EngineCore pid=152) INFO 11-03 15:22:04 [kv_cache_utils.py:2327] GPU KV cache size: 50,048 tokens, Maximum concurrency for 8,192 tokens per request: 6.11x
+GPU: 8766 MiB
+D-hami-alone {"n": 48, "c": 4, "wall_s": 17.4, "tok_s": 354, "p50": 1.43, "p95": 1.6}
+== [E] 피해자 vLLM B(HAMi 없음, util 0.48) + 이웃(HAMi 한도)
+vllm-b ready
+base1 {"n": 48, "c": 4, "wall_s": 17.4, "tok_s": 354, "p50": 1.43, "p95": 1.59}
+base2 {"n": 48, "c": 4, "wall_s": 17.2, "tok_s": 356, "p50": 1.43, "p95": 1.47}
+gemm100-nolimit {"n": 48, "c": 4, "wall_s": 38.5, "tok_s": 160, "p50": 3.2, "p95": 3.26}
+gemm duty=1.0: 평균 65.3 TFLOP/s (벽시계 기준), 가동 중 65.2 TFLOP/s
+gemm100-sm50 {"n": 48, "c": 4, "wall_s": 36.8, "tok_s": 167, "p50": 3.21, "p95": 3.21}
+gemm duty=1.0: 평균 44.3 TFLOP/s (벽시계 기준), 가동 중 44.3 TFLOP/s
+gemm100-sm25 {"n": 48, "c": 4, "wall_s": 22.7, "tok_s": 270, "p50": 1.87, "p95": 2.28}
+gemm duty=1.0: 평균 21.2 TFLOP/s (벽시계 기준), 가동 중 21.1 TFLOP/s
+gemm100-sm10 {"n": 48, "c": 4, "wall_s": 19.2, "tok_s": 320, "p50": 1.61, "p95": 1.65}
+gemm duty=1.0: 평균 8.6 TFLOP/s (벽시계 기준), 가동 중 8.6 TFLOP/s
+copy100-nolimit {"n": 48, "c": 4, "wall_s": 35.6, "tok_s": 173, "p50": 2.96, "p95": 3.01}
+copy duty=1.0: 평균 444 GB/s (벽시계 기준), 가동 중 443 GB/s
+copy100-sm25 {"n": 48, "c": 4, "wall_s": 35.6, "tok_s": 173, "p50": 2.96, "p95": 3.0}
+copy duty=1.0: 평균 443 GB/s (벽시계 기준), 가동 중 443 GB/s
+base-after {"n": 48, "c": 4, "wall_s": 17.3, "tok_s": 354, "p50": 1.44, "p95": 1.54}
+FINISHED

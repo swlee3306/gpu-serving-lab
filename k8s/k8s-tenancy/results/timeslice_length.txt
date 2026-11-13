@@ -1,0 +1,29 @@
+vllm-a ready
+vllm-b ready
+14694 MiB
+Successfully set timeslice policy with value Default for GPU 0
+== timeslice=0
+|   0   Timeslice       Default       |
+B-alone-ts0 {"n": 48, "c": 4, "wall_s": 17.4, "tok_s": 354, "p50": 1.43, "p95": 1.6}
+B-with-A-ts0 {"n": 48, "c": 4, "wall_s": 33.5, "tok_s": 184, "p50": 3.05, "p95": 3.11}
+A-heavy-ts0 {"n": 800, "c": 64, "wall_s": 38.5, "tok_s": 2661, "p50": 3.62, "p95": 3.62}
+Successfully set timeslice policy with value Short for GPU 0
+== timeslice=1
+|   0   Timeslice       Short         |
+B-alone-ts1 {"n": 48, "c": 4, "wall_s": 17.3, "tok_s": 355, "p50": 1.44, "p95": 1.49}
+B-with-A-ts1 {"n": 48, "c": 4, "wall_s": 34.0, "tok_s": 181, "p50": 3.06, "p95": 3.17}
+A-heavy-ts1 {"n": 800, "c": 64, "wall_s": 39.4, "tok_s": 2599, "p50": 3.68, "p95": 3.69}
+Successfully set timeslice policy with value Medium for GPU 0
+== timeslice=2
+|   0   Timeslice       Medium        |
+B-alone-ts2 {"n": 48, "c": 4, "wall_s": 17.3, "tok_s": 355, "p50": 1.44, "p95": 1.49}
+B-with-A-ts2 {"n": 48, "c": 4, "wall_s": 33.5, "tok_s": 183, "p50": 3.06, "p95": 3.11}
+A-heavy-ts2 {"n": 800, "c": 64, "wall_s": 38.6, "tok_s": 2655, "p50": 3.64, "p95": 3.64}
+Successfully set timeslice policy with value Long for GPU 0
+== timeslice=3
+|   0   Timeslice       Long          |
+B-alone-ts3 {"n": 48, "c": 4, "wall_s": 17.3, "tok_s": 355, "p50": 1.44, "p95": 1.49}
+B-with-A-ts3 {"n": 48, "c": 4, "wall_s": 34.2, "tok_s": 179, "p50": 3.06, "p95": 3.16}
+A-heavy-ts3 {"n": 800, "c": 64, "wall_s": 39.8, "tok_s": 2571, "p50": 3.71, "p95": 3.72}
+Successfully set timeslice policy with value Default for GPU 0
+FINISHED

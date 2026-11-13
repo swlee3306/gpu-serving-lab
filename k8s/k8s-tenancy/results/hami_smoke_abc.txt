@@ -1,0 +1,50 @@
+== baseline (LD_PRELOAD 없음)
+[baseline] torch mem_get_info: free=15.32GiB total=15.54GiB
+[baseline] nvidia-smi: 16376 MiB, 218 MiB
+[baseline] gemm: 91.1 TFLOP/s over 10.0s
+[baseline] alloc: 13.0GiB allocated without error
+== hami, 한도 없음
+[HAMI-core Msg(1:124041723266880:libvgpu.c:869)]: Initializing.....
+[HAMI-core Warn(1:124041723266880:multiprocess_memory_limit.c:1282)]: CUDA_DEVICE_MEMORY_SHARED_CACHE not set and POD_UID/CONTAINER_NAME unavailable, using default: /tmp/cudevshr.cache
+[HAMI-core Msg(1:124041723266880:libvgpu.c:944)]: Initialized
+[hami-nolimit] torch mem_get_info: free=15.33GiB total=15.54GiB
+[hami-nolimit] nvidia-smi: 16376 MiB, 210 MiB
+[hami-nolimit] gemm: 91.0 TFLOP/s over 10.0s
+[hami-nolimit] alloc: 13.0GiB allocated without error
+[HAMI-core Msg(1:124041723266880:multiprocess_memory_limit.c:855)]: Cleanup on exit for PID 1
+== hami, 메모리 4g
+[HAMI-core Msg(1:128628825356096:libvgpu.c:869)]: Initializing.....
+[HAMI-core Warn(1:128628825356096:multiprocess_memory_limit.c:1282)]: CUDA_DEVICE_MEMORY_SHARED_CACHE not set and POD_UID/CONTAINER_NAME unavailable, using default: /tmp/cudevshr.cache
+[HAMI-core Msg(1:128628825356096:libvgpu.c:944)]: Initialized
+[hami-mem4g] torch mem_get_info: free=3.79GiB total=4.00GiB
+[hami-mem4g] nvidia-smi: 4096 MiB, 210 MiB
+[hami-mem4g] gemm: 90.7 TFLOP/s over 10.1s
+[HAMI-core ERROR (pid:1 thread=128628825356096 allocator.c:40)]: Device 0 OOM 4544660480 / 4294967296
+[HAMI-core ERROR (pid:1 thread=128628825356096 allocator.c:40)]: Device 0 OOM 4544660480 / 4294967296
+== hami, 메모리 4g + SM 25 (기본 정책)
+[HAMI-core Msg(1:129396019812160:libvgpu.c:869)]: Initializing.....
+[HAMI-core Warn(1:129396019812160:multiprocess_memory_limit.c:1282)]: CUDA_DEVICE_MEMORY_SHARED_CACHE not set and POD_UID/CONTAINER_NAME unavailable, using default: /tmp/cudevshr.cache
+[HAMI-core Msg(1:129396019812160:libvgpu.c:944)]: Initialized
+[hami-sm25-default] torch mem_get_info: free=3.79GiB total=4.00GiB
+[hami-sm25-default] nvidia-smi: 4096 MiB, 210 MiB
+[hami-sm25-default] gemm: 20.6 TFLOP/s over 10.3s
+[HAMI-core ERROR (pid:1 thread=129396019812160 allocator.c:40)]: Device 0 OOM 4544660480 / 4294967296
+[HAMI-core ERROR (pid:1 thread=129396019812160 allocator.c:40)]: Device 0 OOM 4544660480 / 4294967296
+== hami, 메모리 4g + SM 25 (force)
+[HAMI-core Msg(1:129904557635392:libvgpu.c:869)]: Initializing.....
+[HAMI-core Warn(1:129904557635392:multiprocess_memory_limit.c:1282)]: CUDA_DEVICE_MEMORY_SHARED_CACHE not set and POD_UID/CONTAINER_NAME unavailable, using default: /tmp/cudevshr.cache
+[HAMI-core Msg(1:129904557635392:libvgpu.c:944)]: Initialized
+[hami-sm25-force] torch mem_get_info: free=3.79GiB total=4.00GiB
+[hami-sm25-force] nvidia-smi: 4096 MiB, 210 MiB
+[hami-sm25-force] gemm: 20.9 TFLOP/s over 10.4s
+[HAMI-core ERROR (pid:1 thread=129904557635392 allocator.c:40)]: Device 0 OOM 4544660480 / 4294967296
+[HAMI-core ERROR (pid:1 thread=129904557635392 allocator.c:40)]: Device 0 OOM 4544660480 / 4294967296
+== hami, 메모리 4g + SM 50 (force)
+[HAMI-core Msg(1:140382817244992:libvgpu.c:869)]: Initializing.....
+[HAMI-core Warn(1:140382817244992:multiprocess_memory_limit.c:1282)]: CUDA_DEVICE_MEMORY_SHARED_CACHE not set and POD_UID/CONTAINER_NAME unavailable, using default: /tmp/cudevshr.cache
+[HAMI-core Msg(1:140382817244992:libvgpu.c:944)]: Initialized
+[hami-sm50-force] torch mem_get_info: free=3.79GiB total=4.00GiB
+[hami-sm50-force] nvidia-smi: 4096 MiB, 210 MiB
+[hami-sm50-force] gemm: 46.3 TFLOP/s over 10.1s
+[HAMI-core ERROR (pid:1 thread=140382817244992 allocator.c:40)]: Device 0 OOM 4544660480 / 4294967296
+[HAMI-core ERROR (pid:1 thread=140382817244992 allocator.c:40)]: Device 0 OOM 4544660480 / 4294967296

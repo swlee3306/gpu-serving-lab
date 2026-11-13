@@ -1,0 +1,17 @@
+vllm-b ready
+base1 {"n": 48, "c": 4, "wall_s": 17.4, "tok_s": 354, "p50": 1.43, "p95": 1.59}
+base2 {"n": 48, "c": 4, "wall_s": 17.2, "tok_s": 356, "p50": 1.43, "p95": 1.47}
+== eager sm=none
+eager-smnone {"n": 48, "c": 4, "wall_s": 37.5, "tok_s": 164, "p50": 3.12, "p95": 3.17}
+   이웃 A 생성 토큰: 24716개 / 37.5s = 659 tok/s
+== eager sm=25
+eager-sm25 {"n": 48, "c": 4, "wall_s": 25.4, "tok_s": 241, "p50": 2.01, "p95": 2.64}
+   이웃 A 생성 토큰: 9856개 / 25.4s = 388 tok/s
+== eager sm=10
+eager-sm10 {"n": 48, "c": 4, "wall_s": 21.2, "tok_s": 290, "p50": 1.83, "p95": 2.18}
+   이웃 A 생성 토큰: 4672개 / 21.2s = 220 tok/s
+== eager sm=25
+eager-sm25 {"n": 48, "c": 4, "wall_s": 26.0, "tok_s": 236, "p50": 2.22, "p95": 2.8}
+   이웃 A 생성 토큰: 10549개 / 26.0s = 406 tok/s
+base-after {"n": 48, "c": 4, "wall_s": 17.3, "tok_s": 356, "p50": 1.44, "p95": 1.49}
+FINISHED

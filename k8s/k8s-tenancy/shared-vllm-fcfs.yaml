@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Namespace
+metadata: {name: gpu-shared}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: vllm, namespace: gpu-shared}
+spec:
+  replicas: 1
+  strategy: {type: Recreate}
+  selector: {matchLabels: {app: vllm}}
+  template:
+    metadata: {labels: {app: vllm}}
+    spec:
+      enableServiceLinks: false
+      runtimeClassName: nvidia
+      nodeSelector: {gpu: "true"}
+      containers:
+      - name: vllm
+        image: vllm/vllm-openai:latest
+        args: ["--model","Qwen/Qwen2.5-3B-Instruct","--max-model-len","8192","--gpu-memory-utilization","0.85","--max-num-seqs","16","--scheduling-policy","fcfs"]
+        ports: [{containerPort: 8000}]
+        resources: {limits: {nvidia.com/gpu: 1}}
+        volumeMounts: [{name: hf, mountPath: /root/.cache/huggingface}, {name: shm, mountPath: /dev/shm}]
+        startupProbe: {httpGet: {path: /health, port: 8000}, periodSeconds: 5, failureThreshold: 120}
+      volumes:
+      - {name: hf, hostPath: {path: /data/models/hf, type: Directory}}
+      - {name: shm, emptyDir: {medium: Memory, sizeLimit: 2Gi}}

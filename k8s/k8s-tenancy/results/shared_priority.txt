@@ -1,0 +1,6 @@
+["--model","Qwen/Qwen2.5-3B-Instruct","--max-model-len","8192","--gpu-memory-utilization","0.85","--max-num-seqs","16","--scheduling-policy","priority"]
+== [priority] B 단독 기준선
+B-alone {"n": 48, "c": 4, "prio": null, "wall_s": 17.4, "tok_s": 352, "p50": 1.44, "p95": 1.61}
+== [priority] A 무거운 부하 중 B
+B-with-A {"n": 48, "c": 4, "prio": 0, "wall_s": 26.1, "tok_s": 235, "p50": 2.51, "p95": 2.94}
+A-heavy {"n": 800, "c": 64, "prio": 10, "wall_s": 78.3, "tok_s": 1308, "p50": 5.9, "p95": 7.38}

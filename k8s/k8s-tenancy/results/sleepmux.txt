@@ -1,0 +1,37 @@
+vllm-b ready after ~55s
+[B 기동 직후]
+  GPU 메모리: 13234 MiB
+B sleep http=200
+[B 재운 뒤]
+  GPU 메모리: 848 MiB
+{"is_sleeping":true}
+vllm-a ready after ~60s
+[A 기동 직후 (B는 잠든 상태)]
+  GPU 메모리: 14080 MiB
+== A 단독(독점) 부하
+A-awake {"n": 48, "c": 4, "wall_s": 17.4, "tok_s": 354, "p50": 1.43, "p95": 1.59}
+== 전환 1: A 재우고 B 깨우기
+{"sleep_s": 5.0, "wake_s": 0.58, "first_req_s": 0.13, "switch_total_s": 5.71}
+  GPU 메모리: 14098 MiB
+B-awake-1 {"n": 48, "c": 4, "wall_s": 17.2, "tok_s": 356, "p50": 1.43, "p95": 1.47}
+== 전환 1': B 재우고 A 깨우기
+{"sleep_s": 0.28, "wake_s": 0.57, "first_req_s": 0.13, "switch_total_s": 0.97}
+  GPU 메모리: 14098 MiB
+A-awake-1 {"n": 48, "c": 4, "wall_s": 17.2, "tok_s": 356, "p50": 1.43, "p95": 1.47}
+== 전환 2: A 재우고 B 깨우기
+{"sleep_s": 0.28, "wake_s": 0.57, "first_req_s": 0.13, "switch_total_s": 0.97}
+  GPU 메모리: 14098 MiB
+B-awake-2 {"n": 48, "c": 4, "wall_s": 17.2, "tok_s": 356, "p50": 1.43, "p95": 1.47}
+== 전환 2': B 재우고 A 깨우기
+{"sleep_s": 0.28, "wake_s": 0.57, "first_req_s": 0.13, "switch_total_s": 0.97}
+  GPU 메모리: 14098 MiB
+A-awake-2 {"n": 48, "c": 4, "wall_s": 17.2, "tok_s": 356, "p50": 1.43, "p95": 1.47}
+== 전환 3: A 재우고 B 깨우기
+{"sleep_s": 0.28, "wake_s": 0.57, "first_req_s": 0.13, "switch_total_s": 0.97}
+  GPU 메모리: 14098 MiB
+B-awake-3 {"n": 48, "c": 4, "wall_s": 17.2, "tok_s": 356, "p50": 1.43, "p95": 1.47}
+== 전환 3': B 재우고 A 깨우기
+{"sleep_s": 0.28, "wake_s": 0.57, "first_req_s": 0.13, "switch_total_s": 0.97}
+  GPU 메모리: 14098 MiB
+A-awake-3 {"n": 48, "c": 4, "wall_s": 17.2, "tok_s": 356, "p50": 1.43, "p95": 1.47}
+FINISHED
