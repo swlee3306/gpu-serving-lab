@@ -106,7 +106,8 @@ bench/
   bench.py                     closed-loop concurrency benchmark (stdlib only, streaming)
   bench_real.py                open-loop Poisson load generator with mixed lengths and SLO check
   eval_mc.py                   multiple-choice accuracy eval against an OpenAI-compatible server
-  evalset.json / evalset_big.json   200 / 1,257 MC questions (KMMLU CS + MMLU subsets)
+  fetch_evalset.py             downloads the evaluation sets (evalset.json 200 / evalset_big.json 1,257 MC questions,
+                               KMMLU CS + MMLU subsets) from the Hugging Face Hub; the questions are not stored here
 scripts/
   run_profile.sh               start vLLM, record startup KV numbers + nvidia-smi during fixed load
   run_candidate.sh, run_candidate2.sh   eval x2 + load sweep for one model/config
@@ -133,7 +134,8 @@ python3 bench/bench.py --levels 1,4,16,64 --max-tokens 128
 # 3) realistic open-loop load with SLO check (TTFT p95 <= 300 ms, >= 30 tok/s per user)
 python3 bench/bench_real.py --rates 5,10,20 --duration 30
 
-# 4) accuracy
+# 4) accuracy (first download the evaluation sets: they are not part of this repository)
+python3 bench/fetch_evalset.py
 python3 bench/eval_mc.py --model Qwen/Qwen2.5-3B-Instruct --set bench/evalset_big.json --out /tmp/eval.json
 ```
 
@@ -143,7 +145,14 @@ Not in this repo: the Prometheus/Grafana config files and dashboard JSON (they a
 
 ## Data notice
 
-`bench/evalset*.json` contain multiple-choice questions taken from **KMMLU** (Computer Science) and **MMLU**, used only for relative model comparison. Those questions remain under their original datasets' licenses; the MIT license of this repository covers the code and notes only.
+The evaluation questions are **not** included in this repository. `bench/fetch_evalset.py` downloads them from the Hugging Face Hub and writes `bench/evalset.json` and `bench/evalset_big.json` (git-ignored) in the same format and order as the sets used for the measurements. The script checks the SHA-256 of the files it writes against the hashes of the measured sets, so you can tell whether the upstream data has changed.
+
+| Source | License | Used |
+|---|---|---|
+| [KMMLU](https://huggingface.co/datasets/HAERAE-HUB/KMMLU) (HAE-RAE, Son et al. 2024) | CC BY-ND 4.0 | Computer Science test, first 600 rows |
+| [MMLU](https://huggingface.co/datasets/cais/mmlu) (Hendrycks et al. 2021) | MIT | test split of six subjects (machine learning, computer security, college and high-school computer science, electrical engineering, college mathematics) |
+
+Please cite the datasets and follow their licenses. The MIT license of this repository covers the code and notes only.
 
 ## About the notes
 

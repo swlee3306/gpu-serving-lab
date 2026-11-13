@@ -19,3 +19,7 @@ kubeconfig*
 *.key
 .env
 node-token*
+
+# Evaluation sets are downloaded by bench/fetch_evalset.py (not redistributed)
+bench/evalset.json
+bench/evalset_big.json
