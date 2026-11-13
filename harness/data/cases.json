@@ -1,0 +1,538 @@
+[
+ {
+  "id": "A_M1_end_inclusive",
+  "label": "behavior_failure",
+  "exit_code": 1,
+  "log": ".....FF..                                                                [100%]\n=================================== FAILURES ===================================\n__________________________ test_end_boundary_excluded __________________________\ntests/test_ingest.py:45: in test_end_boundary_excluded\n    assert aggregate(s, 10, 20) is None\nE   assert 4 is None\nE    +  where 4 = aggregate(<ingest.Store object at 0x107645370>, 10, 20)\n_______________________ test_boundary_before_exact_after _______________________\ntests/test_ingest.py:51: in test_boundary_before_exact_after\n    assert aggregate(s, 10, 20) == 5\nE   assert 9 == 5\nE    +  where 9 = aggregate(<ingest.Store object at 0x10762ead0>, 10, 20)\n=========================== short test summary info ============================\nFAILED tests/test_ingest.py::test_end_boundary_excluded - assert 4 is None\nFAILED tests/test_ingest.py::test_boundary_before_exact_after - assert 9 == 5\n2 failed, 7 passed in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "behavior_failure",
+   "counts": {
+    "passed": 7,
+    "failed": 2,
+    "errors": 0
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "mutant M1_end_inclusive: 끝 경계 포함(< → <=)"
+ },
+ {
+  "id": "A_M2_no_dedupe",
+  "label": "behavior_failure",
+  "exit_code": 1,
+  "log": ".F.......                                                                [100%]\n=================================== FAILURES ===================================\n___________________ test_reingest_same_batch_does_not_double ___________________\ntests/test_ingest.py:21: in test_reingest_same_batch_does_not_double\n    assert aggregate(s, 0, 10) == 30\nE   assert 60 == 30\nE    +  where 60 = aggregate(<ingest.Store object at 0x10776f9d0>, 0, 10)\n=========================== short test summary info ============================\nFAILED tests/test_ingest.py::test_reingest_same_batch_does_not_double - asser...\n1 failed, 8 passed in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "behavior_failure",
+   "counts": {
+    "passed": 8,
+    "failed": 1,
+    "errors": 0
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "mutant M2_no_dedupe: 중복 제거 삭제"
+ },
+ {
+  "id": "A_M3_missing_zero",
+  "label": "behavior_failure",
+  "exit_code": 1,
+  "log": "...F.F...                                                                [100%]\n=================================== FAILURES ===================================\n________________________ test_missing_is_none_not_zero _________________________\ntests/test_ingest.py:33: in test_missing_is_none_not_zero\n    assert aggregate(s, 0, 10) is None\nE   assert 0 is None\nE    +  where 0 = aggregate(<ingest.Store object at 0x108c33230>, 0, 10)\n__________________________ test_end_boundary_excluded __________________________\ntests/test_ingest.py:45: in test_end_boundary_excluded\n    assert aggregate(s, 10, 20) is None\nE   assert 0 is None\nE    +  where 0 = aggregate(<ingest.Store object at 0x108c91490>, 10, 20)\n=========================== short test summary info ============================\nFAILED tests/test_ingest.py::test_missing_is_none_not_zero - assert 0 is None\nFAILED tests/test_ingest.py::test_end_boundary_excluded - assert 0 is None\n2 failed, 7 passed in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "behavior_failure",
+   "counts": {
+    "passed": 7,
+    "failed": 2,
+    "errors": 0
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "mutant M3_missing_zero: 결측을 0으로 반환"
+ },
+ {
+  "id": "A_M4_start_exclusive",
+  "label": "behavior_failure",
+  "exit_code": 1,
+  "log": "....F.F..                                                                [100%]\n=================================== FAILURES ===================================\n_________________________ test_start_boundary_included _________________________\ntests/test_ingest.py:39: in test_start_boundary_included\n    assert aggregate(s, 10, 20) == 4\nE   assert None == 4\nE    +  where None = aggregate(<ingest.Store object at 0x10abf3360>, 10, 20)\n_______________________ test_boundary_before_exact_after _______________________\ntests/test_ingest.py:51: in test_boundary_before_exact_after\n    assert aggregate(s, 10, 20) == 5\nE   assert 3 == 5\nE    +  where 3 = aggregate(<ingest.Store object at 0x10ac3aad0>, 10, 20)\n=========================== short test summary info ============================\nFAILED tests/test_ingest.py::test_start_boundary_included - assert None == 4\nFAILED tests/test_ingest.py::test_boundary_before_exact_after - assert 3 == 5\n2 failed, 7 passed in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "behavior_failure",
+   "counts": {
+    "passed": 7,
+    "failed": 2,
+    "errors": 0
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "mutant M4_start_exclusive: 시작 경계 제외(<= → <)"
+ },
+ {
+  "id": "A_M5_no_rollback",
+  "label": "behavior_failure",
+  "exit_code": 1,
+  "log": ".......F.                                                                [100%]\n=================================== FAILURES ===================================\n________________________ test_save_is_atomic_on_failure ________________________\ntests/test_ingest.py:59: in test_save_is_atomic_on_failure\n    assert s.results == {\"k0\": 1}\nE   AssertionError: assert {'k0': 1, 'k1': 2, 'k2': 3} == {'k0': 1}\nE     \nE     Omitting 1 identical items, use -vv to show\nE     Left contains 2 more items:\nE     {'k1': 2, 'k2': 3}\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_ingest.py::test_save_is_atomic_on_failure - AssertionError:...\n1 failed, 8 passed in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "behavior_failure",
+   "counts": {
+    "passed": 8,
+    "failed": 1,
+    "errors": 0
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "mutant M5_no_rollback: 저장 실패 시 롤백 삭제"
+ },
+ {
+  "id": "A_M6_sum_plus_one",
+  "label": "behavior_failure",
+  "exit_code": 1,
+  "log": "FFF.F.F..                                                                [100%]\n=================================== FAILURES ===================================\n________________________________ test_sum_basic ________________________________\ntests/test_ingest.py:13: in test_sum_basic\n    assert aggregate(s, 0, 10) == 35\nE   assert 36 == 35\nE    +  where 36 = aggregate(<ingest.Store object at 0x107401160>, 0, 10)\n___________________ test_reingest_same_batch_does_not_double ___________________\ntests/test_ingest.py:21: in test_reingest_same_batch_does_not_double\n    assert aggregate(s, 0, 10) == 30\nE   assert 31 == 30\nE    +  where 31 = aggregate(<ingest.Store object at 0x10745dbd0>, 0, 10)\n___________________ test_same_ts_different_source_both_count ___________________\ntests/test_ingest.py:27: in test_same_ts_different_source_both_count\n    assert aggregate(s, 0, 10) == 10\nE   assert 11 == 10\nE    +  where 11 = aggregate(<ingest.Store object at 0x10745e350>, 0, 10)\n_________________________ test_start_boundary_included _________________________\ntests/test_ingest.py:39: in test_start_boundary_included\n    assert aggregate(s, 10, 20) == 4\nE   assert 5 == 4\nE    +  where 5 = aggregate(<ingest.Store object at 0x107450770>, 10, 20)\n_______________________ test_boundary_before_exact_after _______________________\ntests/test_ingest.py:51: in test_boundary_before_exact_after\n    assert aggregate(s, 10, 20) == 5\nE   assert 6 == 5\nE    +  where 6 = aggregate(<ingest.Store object at 0x1073a3130>, 10, 20)\n=========================== short test summary info ============================\nFAILED tests/test_ingest.py::test_sum_basic - assert 36 == 35\nFAILED tests/test_ingest.py::test_reingest_same_batch_does_not_double - asser...\nFAILED tests/test_ingest.py::test_same_ts_different_source_both_count - asser...\nFAILED tests/test_ingest.py::test_start_boundary_included - assert 5 == 4\nFAILED tests/test_ingest.py::test_boundary_before_exact_after - assert 6 == 5\n5 failed, 4 passed in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "behavior_failure",
+   "counts": {
+    "passed": 4,
+    "failed": 5,
+    "errors": 0
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "mutant M6_sum_plus_one: 합계에 1 더함"
+ },
+ {
+  "id": "A_M7_dedupe_ignores_source",
+  "label": "behavior_failure",
+  "exit_code": 1,
+  "log": "..F......                                                                [100%]\n=================================== FAILURES ===================================\n___________________ test_same_ts_different_source_both_count ___________________\ntests/test_ingest.py:27: in test_same_ts_different_source_both_count\n    assert aggregate(s, 0, 10) == 10\nE   assert 7 == 10\nE    +  where 7 = aggregate(<ingest.Store object at 0x1078dfb10>, 0, 10)\n=========================== short test summary info ============================\nFAILED tests/test_ingest.py::test_same_ts_different_source_both_count - asser...\n1 failed, 8 passed in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "behavior_failure",
+   "counts": {
+    "passed": 8,
+    "failed": 1,
+    "errors": 0
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "mutant M7_dedupe_ignores_source: 중복 키에서 source 무시"
+ },
+ {
+  "id": "A_M8_swallow_failure",
+  "label": "behavior_failure",
+  "exit_code": 1,
+  "log": ".......F.                                                                [100%]\n=================================== FAILURES ===================================\n________________________ test_save_is_atomic_on_failure ________________________\ntests/test_ingest.py:57: in test_save_is_atomic_on_failure\n    with pytest.raises(SaveError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE SaveError\n=========================== short test summary info ============================\nFAILED tests/test_ingest.py::test_save_is_atomic_on_failure - Failed: DID NOT...\n1 failed, 8 passed in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "behavior_failure",
+   "counts": {
+    "passed": 8,
+    "failed": 1,
+    "errors": 0
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "mutant M8_swallow_failure: 저장 실패를 삼킴"
+ },
+ {
+  "id": "B_timeout",
+  "label": "verification_incomplete",
+  "exit_code": 124,
+  "log": "[CI] 명령이 5초 후 시간 초과로 종료됨 (프로세스 강제 종료)",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "verification_incomplete",
+   "counts": null,
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "hang injected, killed after 5s"
+ },
+ {
+  "id": "B_collection_error",
+  "label": "verification_incomplete",
+  "exit_code": 2,
+  "log": "==================================== ERRORS ====================================\n____________________ ERROR collecting tests/test_ingest.py _____________________\nImportError while importing test module '<repo>/tests/test_ingest.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_ingest.py:1: in <module>\n    from ingest import Store, ingest, aggregate, save, SaveError, merge_batches\nE   ImportError: cannot import name 'merge_batches' from 'ingest' (<repo>/src/ingest.py)\n=========================== short test summary info ============================\nERROR tests/test_ingest.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "verification_incomplete",
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "errors": 1
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "ImportError at collection"
+ },
+ {
+  "id": "B_no_tests_ran",
+  "label": "verification_incomplete",
+  "exit_code": 5,
+  "log": "9 deselected in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short -k nonexistent_filter tests",
+  "gt": {
+   "category": "verification_incomplete",
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "errors": 0
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "-k matched nothing"
+ },
+ {
+  "id": "B_setup_error",
+  "label": "verification_incomplete",
+  "exit_code": 1,
+  "log": "EEEEEEEEE                                                                [100%]\n==================================== ERRORS ====================================\n_______________________ ERROR at setup of test_sum_basic _______________________\ntests/conftest.py:5: in _db\n    raise ConnectionRefusedError('db:5432 connection refused')\nE   ConnectionRefusedError: db:5432 connection refused\n__________ ERROR at setup of test_reingest_same_batch_does_not_double __________\ntests/conftest.py:5: in _db\n    raise ConnectionRefusedError('db:5432 connection refused')\nE   ConnectionRefusedError: db:5432 connection refused\n__________ ERROR at setup of test_same_ts_different_source_both_count __________\ntests/conftest.py:5: in _db\n    raise ConnectionRefusedError('db:5432 connection refused')\nE   ConnectionRefusedError: db:5432 connection refused\n_______________ ERROR at setup of test_missing_is_none_not_zero ________________\ntests/conftest.py:5: in _db\n    raise ConnectionRefusedError('db:5432 connection refused')\nE   ConnectionRefusedError: db:5432 connection refused\n________________ ERROR at setup of test_start_boundary_included ________________\ntests/conftest.py:5: in _db\n    raise ConnectionRefusedError('db:5432 connection refused')\nE   ConnectionRefusedError: db:5432 connection refused\n_________________ ERROR at setup of test_end_boundary_excluded _________________\ntests/conftest.py:5: in _db\n    raise ConnectionRefusedError('db:5432 connection refused')\nE   ConnectionRefusedError: db:5432 connection refused\n______________ ERROR at setup of test_boundary_before_exact_after ______________\ntests/conftest.py:5: in _db\n    raise ConnectionRefusedError('db:5432 connection refused')\nE   ConnectionRefusedError: db:5432 connection refused\n_______________ ERROR at setup of test_save_is_atomic_on_failure _______________\ntests/conftest.py:5: in _db\n    raise ConnectionRefusedError('db:5432 connection refused')\nE   ConnectionRefusedError: db:5432 connection refused\n_________________ ERROR at setup of test_save_success_persists _________________\ntests/conftest.py:5: in _db\n    raise ConnectionRefusedError('db:5432 connection refused')\nE   ConnectionRefusedError: db:5432 connection refused\n=========================== short test summary info ============================\nERROR tests/test_ingest.py::test_sum_basic - ConnectionRefusedError: db:5432 ...\nERROR tests/test_ingest.py::test_reingest_same_batch_does_not_double - Connec...\nERROR tests/test_ingest.py::test_same_ts_different_source_both_count - Connec...\nERROR tests/test_ingest.py::test_missing_is_none_not_zero - ConnectionRefused...\nERROR tests/test_ingest.py::test_start_boundary_included - ConnectionRefusedE...\nERROR tests/test_ingest.py::test_end_boundary_excluded - ConnectionRefusedErr...\nERROR tests/test_ingest.py::test_boundary_before_exact_after - ConnectionRefu...\nERROR tests/test_ingest.py::test_save_is_atomic_on_failure - ConnectionRefuse...\nERROR tests/test_ingest.py::test_save_success_persists - ConnectionRefusedErr...\n9 errors in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "verification_incomplete",
+   "counts": {
+    "passed": 0,
+    "failed": 0,
+    "errors": 9
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "fixture cannot reach test DB"
+ },
+ {
+  "id": "B_file_missing",
+  "label": "verification_incomplete",
+  "exit_code": 4,
+  "log": "no tests ran in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests/test_ingest_v2.py",
+  "gt": {
+   "category": "verification_incomplete",
+   "counts": null,
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "required test file not found"
+ },
+ {
+  "id": "B_subset_only",
+  "label": "verification_incomplete",
+  "exit_code": 0,
+  "log": "...                                                                      [100%]\n3 passed, 6 deselected in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short -k boundary tests",
+  "gt": {
+   "category": "verification_incomplete",
+   "counts": {
+    "passed": 3,
+    "failed": 0,
+    "errors": 0
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "only 3 of 9 required tests ran"
+ },
+ {
+  "id": "B_stale_evidence",
+  "label": "verification_incomplete",
+  "exit_code": 0,
+  "log": ".........                                                                [100%]\n9 passed in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "9f8e7d6",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "verification_incomplete",
+   "counts": {
+    "passed": 9,
+    "failed": 0,
+    "errors": 0
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "evidence is for an older commit"
+ },
+ {
+  "id": "C_skip",
+  "label": "check_weakened",
+  "exit_code": 0,
+  "log": "..s......                                                                [100%]\n8 passed, 1 skipped in 0.01s",
+  "diff": "--- a/tests/test_ingest.py\n+++ b/tests/test_ingest.py\n@@ -22,4 +22,5 @@\n \n \n+@pytest.mark.skip(reason=\"flaky on CI\")\n def test_same_ts_different_source_both_count():\n     s = Store()",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "check_weakened",
+   "counts": {
+    "passed": 8,
+    "failed": 0,
+    "errors": 0
+   },
+   "diff_files": [
+    "tests/test_ingest.py"
+   ]
+  },
+  "synthetic_log": false,
+  "note": "skip added to the only killing test"
+ },
+ {
+  "id": "C_expected_changed",
+  "label": "check_weakened",
+  "exit_code": 0,
+  "log": ".........                                                                [100%]\n9 passed in 0.01s",
+  "diff": "--- a/tests/test_ingest.py\n+++ b/tests/test_ingest.py\n@@ -19,5 +19,5 @@\n     ingest(s, batch)\n     ingest(s, batch)\n-    assert aggregate(s, 0, 10) == 30\n+    assert aggregate(s, 0, 10) == 60",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "check_weakened",
+   "counts": {
+    "passed": 9,
+    "failed": 0,
+    "errors": 0
+   },
+   "diff_files": [
+    "tests/test_ingest.py"
+   ]
+  },
+  "synthetic_log": false,
+  "note": "expected value changed to match mutant output"
+ },
+ {
+  "id": "C_test_deleted",
+  "label": "check_weakened",
+  "exit_code": 0,
+  "log": "........                                                                 [100%]\n8 passed in 0.01s",
+  "diff": "--- a/tests/test_ingest.py\n+++ b/tests/test_ingest.py\n@@ -52,12 +52,4 @@\n \n \n-def test_save_is_atomic_on_failure():\n-    s = Store()\n-    save(s, {\"k0\": 1})\n-    with pytest.raises(SaveError):\n-        save(s, {\"k1\": 2, \"k2\": 3, \"k3\": 4}, fail_after=2)\n-    assert s.results == {\"k0\": 1}\n-\n-\n def test_save_success_persists():\n     s = Store()",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "check_weakened",
+   "counts": {
+    "passed": 8,
+    "failed": 0,
+    "errors": 0
+   },
+   "diff_files": [
+    "tests/test_ingest.py"
+   ]
+  },
+  "synthetic_log": false,
+  "note": "killing test deleted"
+ },
+ {
+  "id": "C_assertion_weakened",
+  "label": "check_weakened",
+  "exit_code": 0,
+  "log": ".........                                                                [100%]\n9 passed in 0.01s",
+  "diff": "--- a/tests/test_ingest.py\n+++ b/tests/test_ingest.py\n@@ -19,5 +19,5 @@\n     ingest(s, batch)\n     ingest(s, batch)\n-    assert aggregate(s, 0, 10) == 30\n+    assert aggregate(s, 0, 10) is not None",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "check_weakened",
+   "counts": {
+    "passed": 9,
+    "failed": 0,
+    "errors": 0
+   },
+   "diff_files": [
+    "tests/test_ingest.py"
+   ]
+  },
+  "synthetic_log": false,
+  "note": "assertion weakened to not-None"
+ },
+ {
+  "id": "C_xfail",
+  "label": "check_weakened",
+  "exit_code": 0,
+  "log": ".......x.                                                                [100%]\n8 passed, 1 xfailed in 0.01s",
+  "diff": "--- a/tests/test_ingest.py\n+++ b/tests/test_ingest.py\n@@ -52,4 +52,5 @@\n \n \n+@pytest.mark.xfail(reason=\"known issue\")\n def test_save_is_atomic_on_failure():\n     s = Store()",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "check_weakened",
+   "counts": {
+    "passed": 8,
+    "failed": 0,
+    "errors": 0
+   },
+   "diff_files": [
+    "tests/test_ingest.py"
+   ]
+  },
+  "synthetic_log": false,
+  "note": "xfail added to the only killing test"
+ },
+ {
+  "id": "C_tolerance",
+  "label": "check_weakened",
+  "exit_code": 0,
+  "log": ".........                                                                [100%]\n9 passed in 0.01s",
+  "diff": "--- a/tests/test_ingest.py\n+++ b/tests/test_ingest.py\n@@ -11,5 +11,5 @@\n     s = Store()\n     ingest(s, [rec(\"a\", 1, 10), rec(\"a\", 2, 20), rec(\"a\", 3, 5)])\n-    assert aggregate(s, 0, 10) == 35\n+    assert abs(aggregate(s, 0, 10) - 35) <= 2\n \n \n@@ -19,5 +19,5 @@\n     ingest(s, batch)\n     ingest(s, batch)\n-    assert aggregate(s, 0, 10) == 30\n+    assert abs(aggregate(s, 0, 10) - 30) <= 2\n \n \n@@ -25,5 +25,5 @@\n     s = Store()\n     ingest(s, [rec(\"a\", 5, 7), rec(\"b\", 5, 3)])\n-    assert aggregate(s, 0, 10) == 10\n+    assert abs(aggregate(s, 0, 10) - 10) <= 2\n \n \n@@ -37,5 +37,5 @@\n     s = Store()\n     ingest(s, [rec(\"a\", 10, 4)])\n-    assert aggregate(s, 10, 20) == 4\n+    assert abs(aggregate(s, 10, 20) - 4) <= 2\n \n \n@@ -49,5 +49,5 @@\n     s = Store()\n     ingest(s, [rec(\"a\", 9, 1), rec(\"a\", 10, 2), rec(\"a\", 19, 3), rec(\"a\", 20, 4)])\n-    assert aggregate(s, 10, 20) == 5\n+    assert abs(aggregate(s, 10, 20) - 5) <= 2",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "check_weakened",
+   "counts": {
+    "passed": 9,
+    "failed": 0,
+    "errors": 0
+   },
+   "diff_files": [
+    "tests/test_ingest.py"
+   ]
+  },
+  "synthetic_log": false,
+  "note": "tolerance widened on all sum assertions"
+ },
+ {
+  "id": "D_all_pass",
+  "label": "ok",
+  "exit_code": 0,
+  "log": ".........                                                                [100%]\n9 passed in 0.01s",
+  "diff": "",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "ok",
+   "counts": {
+    "passed": 9,
+    "failed": 0,
+    "errors": 0
+   },
+   "diff_files": []
+  },
+  "synthetic_log": false,
+  "note": "reference, no change"
+ },
+ {
+  "id": "D_test_added",
+  "label": "ok",
+  "exit_code": 0,
+  "log": "..........                                                               [100%]\n10 passed in 0.01s",
+  "diff": "--- a/tests/test_ingest.py\n+++ b/tests/test_ingest.py\n@@ -64,2 +64,6 @@\n     save(s, {\"k1\": 2, \"k2\": 3})\n     assert s.results == {\"k1\": 2, \"k2\": 3}\n+\n+\n+def test_empty_store_is_none():\n+    assert aggregate(Store(), 0, 10) is None",
+  "required_tests": 10,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "ok",
+   "counts": {
+    "passed": 10,
+    "failed": 0,
+    "errors": 0
+   },
+   "diff_files": [
+    "tests/test_ingest.py"
+   ]
+  },
+  "synthetic_log": false,
+  "note": "legitimate new test added"
+ },
+ {
+  "id": "D_refactor",
+  "label": "ok",
+  "exit_code": 0,
+  "log": ".........                                                                [100%]\n9 passed in 0.01s",
+  "diff": "--- a/tests/test_ingest.py\n+++ b/tests/test_ingest.py\n@@ -4,5 +4,5 @@\n \n \n-def rec(source, ts, value):\n+def make_rec(source, ts, value):\n     return {\"source\": source, \"ts\": ts, \"value\": value}\n \n@@ -10,5 +10,5 @@\n def test_sum_basic():\n     s = Store()\n-    ingest(s, [rec(\"a\", 1, 10), rec(\"a\", 2, 20), rec(\"a\", 3, 5)])\n+    ingest(s, [make_rec(\"a\", 1, 10), make_rec(\"a\", 2, 20), make_rec(\"a\", 3, 5)])\n     assert aggregate(s, 0, 10) == 35\n \n@@ -16,5 +16,5 @@\n def test_reingest_same_batch_does_not_double():\n     s = Store()\n-    batch = [rec(\"a\", 1, 10), rec(\"a\", 2, 20)]\n+    batch = [make_rec(\"a\", 1, 10), make_rec(\"a\", 2, 20)]\n     ingest(s, batch)\n     ingest(s, batch)\n@@ -24,5 +24,5 @@\n def test_same_ts_different_source_both_count():\n     s = Store()\n-    ingest(s, [rec(\"a\", 5, 7), rec(\"b\", 5, 3)])\n+    ingest(s, [make_rec(\"a\", 5, 7), make_rec(\"b\", 5, 3)])\n     assert aggregate(s, 0, 10) == 10\n \n@@ -30,5 +30,5 @@\n def test_missing_is_none_not_zero():\n     s = Store()\n-    ingest(s, [rec(\"a\", 50, 9)])\n+    ingest(s, [make_rec(\"a\", 50, 9)])\n     assert aggregate(s, 0, 10) is None\n \n@@ -36,5 +36,5 @@\n def test_start_boundary_included():\n     s = Store()\n-    ingest(s, [rec(\"a\", 10, 4)])\n+    ingest(s, [make_rec(\"a\", 10, 4)])\n     assert aggregate(s, 10, 20) == 4\n \n@@ -42,5 +42,5 @@\n def test_end_boundary_excluded():\n     s = Store()\n-    ingest(s, [rec(\"a\", 20, 4)])\n+    ingest(s, [make_rec(\"a\", 20, 4)])\n     assert aggregate(s, 10, 20) is None\n \n@@ -48,5 +48,5 @@\n def test_boundary_before_exact_after():\n     s = Store()\n-    ingest(s, [rec(\"a\", 9, 1), rec(\"a\", 10, 2), rec(\"a\", 19, 3), rec(\"a\", 20, 4)])\n+    ingest(s, [make_rec(\"a\", 9, 1), make_rec(\"a\", 10, 2), make_rec(\"a\", 19, 3), make_rec(\"a\", 20, 4)])\n     assert aggregate(s, 10, 20) == 5",
+  "required_tests": 9,
+  "tested_commit": "a1b2c3d",
+  "current_commit": "a1b2c3d",
+  "command": "pytest -q --tb=short tests",
+  "gt": {
+   "category": "ok",
+   "counts": {
+    "passed": 9,
+    "failed": 0,
+    "errors": 0
+   },
+   "diff_files": [
+    "tests/test_ingest.py"
+   ]
+  },
+  "synthetic_log": false,
+  "note": "helper renamed, behavior same"
+ }
+]

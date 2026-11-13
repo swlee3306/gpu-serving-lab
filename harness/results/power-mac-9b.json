@@ -1,0 +1,551 @@
+{
+ "label": "power-mac-9b",
+ "model": "mlx-community/Qwen3.5-9B-MLX-4bit",
+ "t1": [
+  {
+   "id": "A_M1_end_inclusive",
+   "rep": 0,
+   "out": "{\"category\": \"behavior_failure\", \"reason\": \"필수 테스트 스위트가 실행되었으나, 변경으로 인해 두 개의 테스트가 기대값과 다르게 실패했습니다.\"}",
+   "sec": 4.651201963424683,
+   "parsed": true,
+   "pred": "behavior_failure",
+   "correct": true
+  },
+  {
+   "id": "A_M2_no_dedupe",
+   "rep": 0,
+   "out": "{\"category\": \"behavior_failure\", \"reason\": \"필수 테스트 스위트가 실행되었으나, 데이터 집계 로직이 예상치 못한 값 (60) 을 반환하여 테스트가 실패했습니다.\"}",
+   "sec": 4.501669883728027,
+   "parsed": true,
+   "pred": "behavior_failure",
+   "correct": true
+  },
+  {
+   "id": "A_M3_missing_zero",
+   "rep": 0,
+   "out": "{\"category\": \"behavior_failure\", \"reason\": \"필수 테스트 스위트가 실행되었으나, 변경 사항으로 인해 두 개의 테스트가 기대값과 다른 결과를 반환하며 실패했습니다.\"}",
+   "sec": 4.782586097717285,
+   "parsed": true,
+   "pred": "behavior_failure",
+   "correct": true
+  },
+  {
+   "id": "A_M4_start_exclusive",
+   "rep": 0,
+   "out": "{\"category\": \"behavior_failure\", \"reason\": \"필수 테스트 스위트가 실행되었으나, 변경으로 인해 두 개의 테스트가 실패하는 것으로 확인됨.\"}",
+   "sec": 4.587435007095337,
+   "parsed": true,
+   "pred": "behavior_failure",
+   "correct": true
+  },
+  {
+   "id": "A_M5_no_rollback",
+   "rep": 0,
+   "out": "{\"category\": \"behavior_failure\", \"reason\": \"필수 테스트 스위트가 실행되었으나, 데이터 불일치로 인해 테스트가 실패했습니다.\"}",
+   "sec": 4.2139341831207275,
+   "parsed": true,
+   "pred": "behavior_failure",
+   "correct": true
+  },
+  {
+   "id": "A_M6_sum_plus_one",
+   "rep": 0,
+   "out": "{\"category\": \"behavior_failure\", \"reason\": \"필수 테스트 스위트가 실행되었으나, 변경 사항으로 인해 5 개의 테스트가 기대값과 다른 결과를 반환하며 실패했습니다.\"}",
+   "sec": 6.401909828186035,
+   "parsed": true,
+   "pred": "behavior_failure",
+   "correct": true
+  },
+  {
+   "id": "A_M7_dedupe_ignores_source",
+   "rep": 0,
+   "out": "{\"category\": \"behavior_failure\", \"reason\": \"필수 테스트 스위트가 실행되었으나, 변경 사항으로 인해 테스트가 실패했습니다.\"}",
+   "sec": 3.960059881210327,
+   "parsed": true,
+   "pred": "behavior_failure",
+   "correct": true
+  },
+  {
+   "id": "A_M8_swallow_failure",
+   "rep": 0,
+   "out": "{\"category\": \"behavior_failure\", \"reason\": \"필수 테스트가 실행되었으나, 예외가 발생해야 하는 상황에서 예외가 발생하지 않아 요구사항을 위반했습니다.\"}",
+   "sec": 4.114856004714966,
+   "parsed": true,
+   "pred": "behavior_failure",
+   "correct": true
+  },
+  {
+   "id": "B_timeout",
+   "rep": 0,
+   "out": "{\"category\": \"verification_incomplete\", \"reason\": \"필수 테스트 스위트가 시간 초과로 인해 제대로 실행되지 않았습니다.\"}",
+   "sec": 3.148998975753784,
+   "parsed": true,
+   "pred": "verification_incomplete",
+   "correct": true
+  },
+  {
+   "id": "B_collection_error",
+   "rep": 0,
+   "out": "{\"category\": \"verification_incomplete\", \"reason\": \"테스트 수집 단계에서 모듈 import 오류로 인해 필수 테스트가 실행되지 않고 중단됨.\"}",
+   "sec": 4.3533148765563965,
+   "parsed": true,
+   "pred": "verification_incomplete",
+   "correct": true
+  },
+  {
+   "id": "B_no_tests_ran",
+   "rep": 0,
+   "out": "{\"category\": \"verification_incomplete\", \"reason\": \"필수 테스트 스위트가 필터링 조건으로 인해 실행되지 않아 검증이 완료되지 않았습니다.\"}",
+   "sec": 3.4144508838653564,
+   "parsed": true,
+   "pred": "verification_incomplete",
+   "correct": true
+  },
+  {
+   "id": "B_setup_error",
+   "rep": 0,
+   "out": "{\"category\": \"verification_incomplete\", \"reason\": \"테스트 실행 중 필수 설정 단계에서 데이터베이스 연결 오류로 인해 모든 테스트가 실행되지 않고 중단됨\"}",
+   "sec": 6.750829219818115,
+   "parsed": true,
+   "pred": "verification_incomplete",
+   "correct": true
+  },
+  {
+   "id": "B_file_missing",
+   "rep": 0,
+   "out": "{\"category\": \"verification_incomplete\", \"reason\": \"필수 테스트 스위트가 실행되지 않아 종료 코드가 4로 반환되었고, 변경 사항과 관련된 테스트가 하나도 실행되지 않았습니다.\"}",
+   "sec": 4.003971099853516,
+   "parsed": true,
+   "pred": "verification_incomplete",
+   "correct": true
+  },
+  {
+   "id": "B_subset_only",
+   "rep": 0,
+   "out": "{\"category\": \"ok\", \"reason\": \"필수 테스트 스위트가 완전히 실행되어 통과했으며, 이번 변경으로 인해 테스트 기준이 약화되거나 제외된 흔적이 없습니다.\"}",
+   "sec": 3.663771867752075,
+   "parsed": true,
+   "pred": "ok",
+   "correct": false
+  },
+  {
+   "id": "B_stale_evidence",
+   "rep": 0,
+   "out": "{\"category\": \"ok\", \"reason\": \"필수 테스트 스위트가 완전히 실행되어 통과했으며, 이번 변경으로 인해 테스트 기준이 약화되거나 제외되지 않았습니다.\"}",
+   "sec": 3.6052751541137695,
+   "parsed": true,
+   "pred": "ok",
+   "correct": false
+  },
+  {
+   "id": "C_skip",
+   "rep": 0,
+   "out": "{\"category\": \"check_weakened\", \"reason\": \"테스트가 통과했으나, CI 환경에서 불안정하다는 이유로 특정 테스트를 skip 마커로 제외하여 검사 기준이 약화되었습니다.\"}",
+   "sec": 4.100525140762329,
+   "parsed": true,
+   "pred": "check_weakened",
+   "correct": true
+  },
+  {
+   "id": "C_expected_changed",
+   "rep": 0,
+   "out": "{\"category\": \"check_weakened\", \"reason\": \"기대값이 30 에서 60 으로 변경되어 테스트 기준이 약화되었습니다.\"}",
+   "sec": 3.7152676582336426,
+   "parsed": true,
+   "pred": "check_weakened",
+   "correct": true
+  },
+  {
+   "id": "C_test_deleted",
+   "rep": 0,
+   "out": "{\"category\": \"check_weakened\", \"reason\": \"테스트가 통과했으나, 이전 커밋에 존재하던 'test_save_is_atomic_on_failure' 테스트가 삭제되어 검증 기준이 약화되었습니다.\"}",
+   "sec": 4.5073020458221436,
+   "parsed": true,
+   "pred": "check_weakened",
+   "correct": true
+  },
+  {
+   "id": "C_assertion_weakened",
+   "rep": 0,
+   "out": "{\"category\": \"check_weakened\", \"reason\": \"기대값이 구체적인 숫자에서 'is not None'로 변경되어 테스트 기준이 약화되었습니다.\"}",
+   "sec": 3.785499095916748,
+   "parsed": true,
+   "pred": "check_weakened",
+   "correct": true
+  },
+  {
+   "id": "C_xfail",
+   "rep": 0,
+   "out": "{\"category\": \"check_weakened\", \"reason\": \"테스트가 통과했으나, 새로운 변경 사항으로 인해 알려진 문제를 이유로 테스트 실패를 예상하는 xfail 마커가 추가되어 검증 기준이 약화되었습니다.\"",
+   "sec": 4.293578147888184,
+   "parsed": false,
+   "pred": null,
+   "correct": false
+  },
+  {
+   "id": "C_tolerance",
+   "rep": 0,
+   "out": "{\"category\": \"check_weakened\", \"reason\": \"테스트가 통과했지만, 절대값 비교를 통해 허용 오차를 확대하여 검사 기준을 약화했습니다.\"}",
+   "sec": 5.4614362716674805,
+   "parsed": true,
+   "pred": "check_weakened",
+   "correct": true
+  },
+  {
+   "id": "D_all_pass",
+   "rep": 0,
+   "out": "{\"category\": \"ok\", \"reason\": \"필수 테스트 스위트가 완전히 실행되어 통과했으며, 이번 변경으로 인해 테스트 기준이 약화되거나 제외되지 않았습니다.\"}",
+   "sec": 3.55899715423584,
+   "parsed": true,
+   "pred": "ok",
+   "correct": true
+  },
+  {
+   "id": "D_test_added",
+   "rep": 0,
+   "out": "{\"category\": \"ok\", \"reason\": \"필수 테스트 스위트가 완전히 실행되어 모든 테스트가 통과했으며, 변경 사항이 기존 테스트의 동작을 약화하거나 제외하지 않았습니다.\"}",
+   "sec": 4.176274061203003,
+   "parsed": true,
+   "pred": "ok",
+   "correct": true
+  },
+  {
+   "id": "D_refactor",
+   "rep": 0,
+   "out": "{\"category\": \"ok\", \"reason\": \"필수 테스트 스위트가 완전히 실행되어 통과했으며, 변경 사항이 테스트 함수의 이름만 수정한 리팩터링에 해당하여 검사 기준의 약화가 없습니다.\"}",
+   "sec": 7.5677478313446045,
+   "parsed": true,
+   "pred": "ok",
+   "correct": true
+  }
+ ],
+ "t2": [
+  {
+   "id": "A_M1_end_inclusive",
+   "rep": 0,
+   "out": "{\n  \"category\": \"behavior_failure\",\n  \"executed\": {\n    \"passed\": 7,\n    \"failed\": 2,\n    \"errors\": 0\n  },\n  \"failed_tests\": [\n    \"test_end_boundary_excluded\",\n    \"test_boundary_before_exact_after\"\n  ],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 테스트 스위트 9 개 중 2 개가 실패했습니다. 변경 사항과 무관하게 기존 구현이 요구사항을 위반하여 동작 실패가 발생했습니다.\"\n}",
+   "sec": 8.941657066345215,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "A_M2_no_dedupe",
+   "rep": 0,
+   "out": "{\n  \"category\": \"behavior_failure\",\n  \"executed\": {\n    \"passed\": 8,\n    \"failed\": 1,\n    \"errors\": 0\n  },\n  \"failed_tests\": [\n    \"test_reingest_same_batch_does_not_double\"\n  ],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 테스트 스위트가 실행되었으나, test_reingest_same_batch_does_not_double 테스트가 기대값 (30) 과 실제 값 (60) 이 불일치하여 실패했습니다. 나머지 8 개의 테스트는 통과했습니다.\"\n}",
+   "sec": 9.110137701034546,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "A_M3_missing_zero",
+   "rep": 0,
+   "out": "{\n  \"category\": \"behavior_failure\",\n  \"executed\": {\n    \"passed\": 7,\n    \"failed\": 2,\n    \"errors\": 0\n  },\n  \"failed_tests\": [\n    \"test_missing_is_none_not_zero\",\n    \"test_end_boundary_excluded\"\n  ],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 테스트 스위트 9 개 중 2 개가 실패했습니다. 구현이 'aggregate' 함수의 반환값이 0 인 경우 None 이어야 한다는 요구사항을 위반하여, 두 테스트가 실패했습니다. 나머지 7 개 테스트는 통과했으며, 테스트 기준의 약화나 변경은 없습니다.\"\n}",
+   "sec": 10.479615926742554,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "A_M4_start_exclusive",
+   "rep": 0,
+   "out": "{\n  \"category\": \"behavior_failure\",\n  \"executed\": {\n    \"passed\": 7,\n    \"failed\": 2,\n    \"errors\": 0\n  },\n  \"failed_tests\": [\n    \"test_start_boundary_included\",\n    \"test_boundary_before_exact_after\"\n  ],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 테스트 스위트 9 개 중 7 개가 통과했으나, 2 개의 테스트가 실패했습니다. 실패한 테스트는 `test_start_boundary_included` 와 `test_boundary_before_exact_after` 로, 구현이 요구사항을 위반하여 반환값이 기대값과 다릅니다. 이번 변경에는 테스트 파일의 수정 사항이 없으므로, 기존 구현의 결함으로 인한 동작 실패로 판단됩니다.\"\n}",
+   "sec": 11.675272941589355,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "A_M5_no_rollback",
+   "rep": 0,
+   "out": "{\n  \"category\": \"behavior_failure\",\n  \"executed\": {\n    \"passed\": 8,\n    \"failed\": 1,\n    \"errors\": 0\n  },\n  \"failed_tests\": [\n    \"test_save_is_atomic_on_failure\"\n  ],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 테스트 스위트 중 9 개가 실행되었으나, test_save_is_atomic_on_failure 테스트가 기대값과 실제 결과 불일치로 실패했습니다. 나머지 8 개 테스트는 통과했습니다.\"\n}",
+   "sec": 8.666245937347412,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "A_M6_sum_plus_one",
+   "rep": 0,
+   "out": "{\n  \"category\": \"behavior_failure\",\n  \"executed\": {\n    \"passed\": 4,\n    \"failed\": 5,\n    \"errors\": 0\n  },\n  \"failed_tests\": [\n    \"test_sum_basic\",\n    \"test_reingest_same_batch_does_not_double\",\n    \"test_same_ts_different_source_both_count\",\n    \"test_start_boundary_included\",\n    \"test_boundary_before_exact_after\"\n  ],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 테스트 스위트 9 개 중 5 개가 실패했습니다. 변경 사항과 관련된 테스트 파일에는 수정 사항이 없으며, 실패는 기존 구현의 동작 오류로 보입니다.\"\n}",
+   "sec": 12.200361967086792,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "A_M7_dedupe_ignores_source",
+   "rep": 0,
+   "out": "{\n  \"category\": \"behavior_failure\",\n  \"executed\": {\n    \"passed\": 8,\n    \"failed\": 1,\n    \"errors\": 0\n  },\n  \"failed_tests\": [\n    \"test_same_ts_different_source_both_count\"\n  ],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 테스트 스위트가 실행되었으나, test_same_ts_different_source_both_count 테스트가 실패했습니다. 기대값 10 대신 7이 반환되어 동작이 요구사항을 위반했습니다.\"\n}",
+   "sec": 8.518643856048584,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "A_M8_swallow_failure",
+   "rep": 0,
+   "out": "{\n  \"category\": \"behavior_failure\",\n  \"executed\": {\n    \"passed\": 8,\n    \"failed\": 1,\n    \"errors\": 0\n  },\n  \"failed_tests\": [\n    \"test_save_is_atomic_on_failure\"\n  ],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 테스트 스위트가 실행되었으나, test_save_is_atomic_on_failure 테스트에서 SaveError 예외가 발생하지 않아 실패했습니다. 나머지 8 개 테스트는 통과했습니다.\"\n}",
+   "sec": 8.119220972061157,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "B_timeout",
+   "rep": 0,
+   "out": "{\n  \"category\": \"verification_incomplete\",\n  \"executed\": {\n    \"passed\": 0,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 테스트 스위트가 5 초 후 시간 초과로 실행되지 않았으며, 프로세스가 강제 종료되었습니다.\"\n}",
+   "sec": 6.4167320728302,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "B_collection_error",
+   "rep": 0,
+   "out": "{\n  \"category\": \"verification_incomplete\",\n  \"executed\": {\n    \"passed\": 0,\n    \"failed\": 0,\n    \"errors\": 1\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [],\n  \"summary\": \"테스트 수집 단계에서 'merge_batches' 모듈이 import 에 실패하여 1 개의 에러가 발생했고, 나머지 9 개의 필수 테스트가 실행되지 않았습니다.\"\n}",
+   "sec": 8.038754224777222,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "B_no_tests_ran",
+   "rep": 0,
+   "out": "{\n  \"category\": \"verification_incomplete\",\n  \"executed\": {\n    \"passed\": 0,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 테스트 스위트인 tests/를 필터링 조건으로 인해 9 개 테스트가 모두 선택되지 않아 실행되지 않았습니다. 종료 코드 5 는 검증 불완전을 의미합니다.\"\n}",
+   "sec": 7.2527077198028564,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "B_setup_error",
+   "rep": 0,
+   "out": "{\n  \"category\": \"verification_incomplete\",\n  \"executed\": {\n    \"passed\": 0,\n    \"failed\": 0,\n    \"errors\": 9\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 테스트 스위트 9 개 중 9 개가 실행되지 않았습니다. 데이터베이스 연결 거부 (ConnectionRefusedError) 로 인해 모든 테스트의 setup 단계에서 오류가 발생했으며, 이는 환경 설정 오류로 인한 미실행 상태입니다.\"\n}",
+   "sec": 10.94475507736206,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "B_file_missing",
+   "rep": 0,
+   "out": "{\n  \"category\": \"verification_incomplete\",\n  \"executed\": {\n    \"passed\": 0,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 스위트인 tests/를 실행하려 했으나, 'no tests ran' 메시지로 인해 실제 테스트가 하나도 실행되지 않았습니다. 종료 코드 4 는 테스트 실행 실패를 의미하며, 이는 검증이 불완전함을 나타냅니다.\"\n}",
+   "sec": 7.991832256317139,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "B_subset_only",
+   "rep": 0,
+   "out": "{\n  \"category\": \"ok\",\n  \"executed\": {\n    \"passed\": 3,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 테스트 스위트 (tests/) 가 실행되었고, 3 개의 테스트가 통과하여 종료 코드 0 으로 성공했습니다. 변경 사항이 없으므로 검사 기준의 약화는 없습니다.\"\n}",
+   "sec": 7.034152030944824,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": false,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "B_stale_evidence",
+   "rep": 0,
+   "out": "{\n  \"category\": \"ok\",\n  \"executed\": {\n    \"passed\": 9,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 스위트 9 개 테스트가 모두 통과했으며, 실패나 오류는 발생하지 않았습니다. 이번 변경에 테스트 파일이나 설정 파일의 수정이 없으므로 검사 기준의 약화도 없습니다.\"\n}",
+   "sec": 7.135066747665405,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": false,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "C_skip",
+   "rep": 0,
+   "out": "{\n  \"category\": \"check_weakened\",\n  \"executed\": {\n    \"passed\": 8,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [\n    \"tests/test_ingest.py\"\n  ],\n  \"summary\": \"필수 테스트 스위트가 완전히 실행되어 8 개가 통과했으나, 'test_same_ts_different_source_both_count' 테스트가 CI 에서 불안정하다는 이유로 스킵 처리되므로 검사 기준이 약화되었습니다.\"\n}",
+   "sec": 8.340276002883911,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "C_expected_changed",
+   "rep": 0,
+   "out": "{\n  \"category\": \"check_weakened\",\n  \"executed\": {\n    \"passed\": 9,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [\n    \"tests/test_ingest.py\"\n  ],\n  \"summary\": \"필수 테스트 스위트가 완전히 실행되어 9 개가 모두 통과했으나, 기대값이 30 에서 60 으로 변경되어 검사 기준이 약화되었습니다.\"\n}",
+   "sec": 7.904928922653198,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "C_test_deleted",
+   "rep": 0,
+   "out": "{\n  \"category\": \"check_weakened\",\n  \"executed\": {\n    \"passed\": 8,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [\n    \"tests/test_ingest.py\"\n  ],\n  \"summary\": \"테스트 스위트는 8 개 테스트가 모두 통과하여 실패하지 않았으나, diff 결과 'test_save_is_atomic_on_failure' 테스트 함수가 삭제되어 검사 기준이 약화되었습니다.\"\n}",
+   "sec": 8.323169946670532,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "C_assertion_weakened",
+   "rep": 0,
+   "out": "{\n  \"category\": \"check_weakened\",\n  \"executed\": {\n    \"passed\": 9,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [\n    \"tests/test_ingest.py\"\n  ],\n  \"summary\": \"모든 필수 테스트가 통과했으나, test_ingest.py 파일의 단언이 '== 30'에서 'is not None'으로 변경되어 검사 기준이 약화되었습니다.\"\n}",
+   "sec": 8.011582851409912,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "C_xfail",
+   "rep": 0,
+   "out": "{\n  \"category\": \"check_weakened\",\n  \"executed\": {\n    \"passed\": 8,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [\n    \"tests/test_ingest.py\"\n  ],\n  \"summary\": \"테스트 스위트는 8 개 통과, 1 개 예기치 않은 실패 (xfail) 로 완료되었으나, 변경 사항으로 인해 'test_save_is_atomic_on_failure' 테스트가 'known issue' 이유로 xfail 마커가 추가되어 검사 기준이 약화되었습니다.\"\n}",
+   "sec": 8.945072174072266,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "C_tolerance",
+   "rep": 0,
+   "out": "{\n  \"category\": \"check_weakened\",\n  \"executed\": {\n    \"passed\": 9,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [\n    \"tests/test_ingest.py\"\n  ],\n  \"summary\": \"9 개의 필수 테스트가 모두 통과했으나, test_ingest.py 파일의 5 개 테스트에서 기대값이 고정값에서 허용 오차 (tolerance) 를 가진 비교로 변경되어 검사 기준이 약화되었습니다.\"\n}",
+   "sec": 10.134081840515137,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "D_all_pass",
+   "rep": 0,
+   "out": "{\n  \"category\": \"ok\",\n  \"executed\": {\n    \"passed\": 9,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [],\n  \"summary\": \"필수 스위트 9 개 테스트가 모두 통과했으며, 실패나 오류는 발생하지 않았습니다. 이번 변경에 테스트 파일이나 설정 파일의 수정이 없으므로 검사 기준의 약화도 없습니다.\"\n}",
+   "sec": 7.128442049026489,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "D_test_added",
+   "rep": 0,
+   "out": "{\n  \"category\": \"ok\",\n  \"executed\": {\n    \"passed\": 10,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [\n    \"tests/test_ingest.py\"\n  ],\n  \"summary\": \"10 개의 필수 테스트가 모두 통과했으며, 종료 코드는 0 입니다. 변경 사항으로 인해 test_ingest.py 파일에 새로운 테스트 함수가 추가되었으나, 기존 테스트의 기준은 약화되지 않았습니다.\"\n}",
+   "sec": 8.310120105743408,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  },
+  {
+   "id": "D_refactor",
+   "rep": 0,
+   "out": "{\n  \"category\": \"ok\",\n  \"executed\": {\n    \"passed\": 9,\n    \"failed\": 0,\n    \"errors\": 0\n  },\n  \"failed_tests\": [],\n  \"criteria_changes\": [\n    \"tests/test_ingest.py\"\n  ],\n  \"summary\": \"필수 테스트 스위트인 tests/에서 9 개의 테스트가 모두 통과했습니다. 이번 변경은 테스트 파일 내의 헬퍼 함수를 재명명하는 리팩터링이며, 테스트의 동작이나 기대값은 변경되지 않았습니다.\"\n}",
+   "sec": 11.619395017623901,
+   "parsed": true,
+   "schema_ok": true,
+   "category_ok": true,
+   "counts_ok": true,
+   "failed_tests_ok": true,
+   "criteria_ok": true,
+   "hallucinated_names": 0
+  }
+ ],
+ "t4": [
+  {
+   "sample": 0,
+   "out": "```json\n[\n  {\n    \"name\": \"빈 저장소 범위 조회\",\n    \"ingests\": [],\n    \"start\": 0,\n    \"end\": 100,\n    \"expected\": null\n  },\n  {\n    \"name\": \"단일 레코드 정확도 (경계 포함)\",\n    \"ingests\": [\n      { \"source\": \"A\", \"ts\": 0, \"value\": 5 }\n    ],\n    \"start\": 0,\n    \"end\": 10,\n    \"expected\": 5\n  },\n  {\n    \"name\": \"단일 레코드 정확도 (경계 제외)\",\n    \"ingests\": [\n      { \"source\": \"A\", \"ts\": 10, \"value\": 5 }\n    ],\n    \"start\": 0,\n    \"end\": 10,\n    \"expected\": null\n  },\n  {\n    \"name\": \"다중 소스 중복 처리 (동일 ts, 다른 source)\",\n    \"ingests\": [\n      { \"source\": \"A\", \"ts\": 5, \"value\": 10 },\n      { \"source\": \"B\", \"ts\": 5, \"value\": 20 }\n    ],\n    \"start\": 0,\n    \"end\": 10,\n    \"expected\": 30\n  },\n  {\n    \"name\": \"동일 소스 중복 처리 (동일 ts, 동일 source)\",\n    \"ingests\": [\n      { \"source\": \"A\", \"ts\": 5, \"value\": 10 },\n      { \"source\": \"A\", \"ts\": 5, \"value\": 20 }\n    ],\n    \"start\": 0,\n    \"end\": 10,\n    \"expected\": 10\n  },\n  {\n    \"name\": \"구간 내 값 누락 (None 반환)\",\n    \"ingests\": [\n      { \"source\": \"A\", \"ts\": 0, \"value\": 10 },\n      { \"source\": \"B\", \"ts\": 10, \"value\": 20 }\n    ],\n    \"start\": 5,\n    \"end\": 9,\n    \"expected\": null\n  },\n  {\n    \"name\": \"저장 후 재인스팅 (불변성: 기존 결과 유지)\",\n    \"ingests\": [\n      { \"source\": \"A\", \"ts\": 0, \"value\": 10 }\n    ],\n    \"start\": 0,\n    \"end\": 2,\n    \"expected\": 10\n  },\n  {\n    \"name\": \"저장 후 추가 인스팅 (누적 합계)\",\n    \"ingests\": [\n      { \"source\": \"A\", \"ts\": 0, \"value\": 10 },\n      { \"source\": \"A\", \"ts\": 1, \"value\": 5 }\n    ],\n    \"start\": 0,\n    \"end\": 2,\n    \"expected\": 15\n  },\n  {\n    \"name\": \"Partial Failure 시 Rollback (실패 시 변경 취소)\",\n    \"ingests\": [\n      { \"source\": \"A\", \"ts\": 0, \"value\": 10 },\n      { \"source\": \"B\", \"ts\": 1, \"value\": 20 },\n      { \"source\": \"C\", \"ts\": 2, \"value\": 30 }\n    ],\n    \"start\": 0,\n    \"end\": 5,\n    \"expected\": null\n  },\n  {\n    \"name\": \"Partial Failure 성공 시 (n 개 이상 저장)\",\n    \"ingests\": [\n      { \"source\": \"A\", \"ts\": 0, \"value\": 10 },\n      { \"source\": \"B\", \"ts\": 1, \"value\": 20 },\n      { \"source\": \"C\", \"ts\": 2, \"value\": 30 }\n    ],\n    \"start\": 0,\n    \"end\": 5,\n    \"expected\": 60\n  }\n]\n```",
+   "sec": 48.935901165008545,
+   "parsed": true,
+   "n": 10,
+   "malformed": 9,
+   "valid": 1,
+   "false_alarm": 0,
+   "killed": [
+    "M3_missing_zero"
+   ],
+   "kills": 1
+  }
+ ],
+ "wall_sec": 367.56491327285767
+}
