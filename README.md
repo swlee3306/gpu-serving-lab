@@ -1,3 +1,5 @@
+**English** | [한국어](README.ko.md)
+
 # gpu-serving-lab
 
 Hands-on notes, scripts and raw measurements from building a small **LLM serving platform on a single consumer GPU** (RTX 4070 Ti SUPER, 16 GB), step by step:
@@ -6,7 +8,7 @@ Hands-on notes, scripts and raw measurements from building a small **LLM serving
 
 Every number in this repository was measured on the hardware described below. Most experiments were run **once** on **one GPU**; the step notes say so wherever it matters, and they separate *measured*, *estimated* and *not verified*.
 
-> The step notes are written in Korean (they are my working lab notebook). This README is the English entry point; a Korean summary follows at the end.
+> The step notes are written in Korean (they are my working lab notebook). This README is the English entry point; a full Korean translation is in [README.ko.md](README.ko.md).
 
 ---
 
@@ -160,14 +162,7 @@ The notes were written while working with AI coding assistants (Claude Code, Cod
 
 ---
 
-## 한국어 요약
-
-GPU 한 장(RTX 4070 Ti SUPER 16GB) 홈랩에서 **단일 GPU LLM 서빙 → 부하 테스트 → 최적화 → 관측 → 쿠버네티스 GPU 노드 → 멀티테넌시** 순서로 직접 실습하고 측정한 기록입니다.
-
-- **수치는 모두 직접 측정한 값이고**, 대부분 1회 측정입니다. 각 문서는 "측정함 / 추정 / 확인 못 함"을 구분해서 적었습니다.
-- 핵심 결과: 이상적 부하에서는 약 10,500 tok/s에서 포화되지만 현실적 부하에서는 약 1,300 tok/s(약 8배 낮음)이고, 이때 한계는 KV cache입니다. GPU 사용률 100%는 용량 지표가 되지 못합니다. time-slicing과 MPS는 성능 격리를 해 주지 못했고(피해자 지연 약 2배), 공유 엔진에서 우선순위 스케줄링을 쓰면 피해자 지연이 5.88s에서 2.51s로 줄었습니다.
-- Step 5(과금·GPUaaS API), Step 6(장애·복구 시간표), Step 7(가상화 정리)은 **아직 계획 단계**입니다([docs/plan.md](docs/plan.md)).
-- 문서 읽는 순서: [step-0](docs/step-0-tooling.md) → [step-1](docs/step-1-single-gpu-serving.md) → [step-1b](docs/step-1b-load-testing.md) → [step-1c](docs/step-1c-optimization.md) → [step-1d](docs/step-1d-summary-table.md) → [step-2](docs/step-2-observability.md) → [step-3](docs/step-3-k8s-gpu-node.md) → [step-4](docs/step-4-multitenancy.md) → [research](docs/research-multitenancy.md).
+A full Korean translation is available in [README.ko.md](README.ko.md).
 
 ## License
 
