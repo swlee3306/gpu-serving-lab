@@ -1,0 +1,21 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Local run output, secrets and kubeconfigs (never commit)
+*.log
+*.kubeconfig
+kubeconfig*
+*.pem
+*-key
+*.key
+.env
+node-token*

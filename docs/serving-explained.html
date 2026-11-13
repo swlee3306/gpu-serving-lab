@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>서빙이란? 그림으로 이해하기</title>
+<style>
+:root{--bg:#f3f5f8;--card:#fff;--ink:#0b1220;--mut:#475672;--line:#d3dae6;--red:#c62828;--redbg:#fde4e5;--blue:#0b57d0;--bluebg:#e3eeff;--green:#11813f;--greenbg:#e0f4e8;--amber:#b45309;--amberbg:#fff0c2;--violet:#6b3fd0;--violetbg:#ebe5fc;--grey:#8896ad}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1320;--card:#161f33;--ink:#e8edf7;--mut:#a5b2cc;--line:#2b3a58;--red:#ff8a8a;--redbg:#3a1f27;--blue:#7fb0ff;--bluebg:#1b2c4f;--green:#4ade80;--greenbg:#12301f;--amber:#fbbf24;--amberbg:#3a2d10;--violet:#b79cff;--violetbg:#2a2150;--grey:#7b89a6}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;line-height:1.6}
+main{max-width:1000px;margin:0 auto;padding:26px 18px 56px}
+h1{font-size:clamp(1.6rem,1.3rem+1.4vw,2.3rem);margin:0 0 6px}
+.lead{color:var(--mut);margin:0 0 26px}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:0 0 20px}
+h2{font-size:1.2rem;margin:0 0 4px}
+.sub{color:var(--mut);margin:0 0 12px;font-size:.97rem}
+.fig{overflow-x:auto}
+svg{display:block;width:100%;min-width:640px;height:auto}
+svg text{font-family:inherit;fill:var(--ink)}
+.t{font-size:15px}.b{font-weight:800}.m{fill:var(--mut)!important;font-size:13.5px}.w{fill:#fff!important;font-weight:800}
+.say{margin:12px 0 0;padding:10px 14px;border-radius:10px;background:var(--bluebg);font-size:.97rem}
+.say b{display:block;margin-bottom:2px}
+.note{margin:8px 0 0;color:var(--mut);font-size:.9rem}
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.term{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.95rem}
+.term b{display:block}
+</style>
+</head>
+<body>
+<main>
+<h1>서빙이란? 그림으로 이해하기</h1>
+<p class="lead">한 장씩 위에서부터 보세요. 각 그림 아래의 파란 상자가 "이 그림이 말하는 것"입니다.</p>
+
+<!-- 1 -->
+<section>
+<h2>① "실행"과 "서빙"은 뭐가 다른가</h2>
+<p class="sub">같은 질문 3개를 처리하는 데 걸리는 시간 (장난감 실습의 숫자: 로딩 3초, 답하기 0.5초)</p>
+<div class="fig"><svg viewBox="0 0 900 270" role="img" aria-label="실행과 서빙의 시간 비교">
+  <text class="t b" x="20" y="34">실행 (매번 새로 시작)</text>
+  <g>
+    <rect x="20" y="46" width="180" height="40" rx="6" fill="var(--red)"/><text class="t w" x="110" y="72" text-anchor="middle">모델 불러오기 3초</text>
+    <rect x="200" y="46" width="30" height="40" rx="6" fill="var(--blue)"/>
+    <rect x="240" y="46" width="180" height="40" rx="6" fill="var(--red)"/><text class="t w" x="330" y="72" text-anchor="middle">불러오기 3초</text>
+    <rect x="420" y="46" width="30" height="40" rx="6" fill="var(--blue)"/>
+    <rect x="460" y="46" width="180" height="40" rx="6" fill="var(--red)"/><text class="t w" x="550" y="72" text-anchor="middle">불러오기 3초</text>
+    <rect x="640" y="46" width="30" height="40" rx="6" fill="var(--blue)"/>
+  </g>
+  <text class="t" x="684" y="72">합계 약 10.5초</text>
+  <text class="m" x="20" y="104">질문 1 · 질문 2 · 질문 3 — 질문마다 모델을 다시 불러온다 (파란 칸 = 실제로 답하는 시간)</text>
+
+  <text class="t b" x="20" y="160">서빙 (켜 두고 계속 받는다)</text>
+  <g>
+    <rect x="20" y="172" width="180" height="40" rx="6" fill="var(--red)"/><text class="t w" x="110" y="198" text-anchor="middle">모델 불러오기 3초 (한 번)</text>
+    <rect x="200" y="172" width="30" height="40" rx="6" fill="var(--blue)"/>
+    <rect x="230" y="172" width="30" height="40" rx="6" fill="var(--blue)"/>
+    <rect x="260" y="172" width="30" height="40" rx="6" fill="var(--blue)"/>
+  </g>
+  <text class="t" x="304" y="198">합계 약 4.5초</text>
+  <text class="m" x="20" y="230">서버를 켤 때 한 번만 불러온다 → 이후 질문은 바로 답한다</text>
+  <path d="M296 245 H20" stroke="var(--grey)" stroke-dasharray="4 4" fill="none"/>
+  <text class="m" x="304" y="250">서빙이 줄인 시간 ≈ 6초 (질문이 많을수록 차이가 벌어진다)</text>
+</svg></div>
+<div class="say"><b>이 그림이 말하는 것</b>빨간 칸(모델 불러오기)이 가장 무겁다. 서빙은 그 빨간 칸을 <u>한 번만</u> 치르고 계속 켜 두는 것이다. 실제 LLM은 모델이 수 GB~수십 GB라서 이 차이가 훨씬 크다.</div>
+</section>
+
+<!-- 2 -->
+<section>
+<h2>② 웹 서버와 같은 구조다</h2>
+<p class="sub">이미 아는 "웹 서버"와 나란히 놓으면 구조가 같다</p>
+<div class="fig"><svg viewBox="0 0 900 300" role="img" aria-label="웹 서버와 LLM 서빙의 구조 비교">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--mut)"/></marker></defs>
+  <text class="t b" x="20" y="28">웹 서버</text>
+  <rect x="20" y="40" width="150" height="52" rx="8" fill="var(--card)" stroke="var(--grey)" stroke-width="2"/><text class="t" x="95" y="72" text-anchor="middle">브라우저</text>
+  <path d="M170 66H250" stroke="var(--mut)" stroke-width="2" marker-end="url(#ar)"/><text class="m" x="210" y="58" text-anchor="middle">요청</text>
+  <rect x="250" y="40" width="170" height="52" rx="8" fill="var(--card)" stroke="var(--grey)" stroke-width="2"/><text class="t" x="335" y="72" text-anchor="middle">nginx (켜져 있음)</text>
+  <path d="M420 66H500" stroke="var(--mut)" stroke-width="2" marker-end="url(#ar)"/>
+  <rect x="500" y="40" width="170" height="52" rx="8" fill="var(--card)" stroke="var(--grey)" stroke-width="2"/><text class="t" x="585" y="72" text-anchor="middle">HTML 파일</text>
+
+  <text class="t b" x="20" y="150">LLM 서빙</text>
+  <rect x="20" y="162" width="150" height="52" rx="8" fill="var(--bluebg)" stroke="var(--blue)" stroke-width="2"/><text class="t" x="95" y="194" text-anchor="middle">앱 / curl</text>
+  <path d="M170 188H250" stroke="var(--mut)" stroke-width="2" marker-end="url(#ar)"/><text class="m" x="210" y="180" text-anchor="middle">질문</text>
+  <rect x="250" y="162" width="190" height="52" rx="8" fill="var(--bluebg)" stroke="var(--blue)" stroke-width="2"/><text class="t b" x="345" y="186" text-anchor="middle">서빙 엔진 (vLLM)</text><text class="m" x="345" y="204" text-anchor="middle">켜져 있음 · 요청 묶기</text>
+  <path d="M440 188H520" stroke="var(--mut)" stroke-width="2" marker-end="url(#ar)"/>
+  <rect x="520" y="162" width="200" height="52" rx="8" fill="var(--greenbg)" stroke="var(--green)" stroke-width="2"/><text class="t b" x="620" y="186" text-anchor="middle">모델 (GPU 메모리)</text><text class="m" x="620" y="204" text-anchor="middle">미리 올려 둔 상태</text>
+  <path d="M720 188H790" stroke="var(--mut)" stroke-width="2" marker-end="url(#ar)"/>
+  <rect x="790" y="162" width="90" height="52" rx="8" fill="var(--amberbg)" stroke="var(--amber)" stroke-width="2"/><text class="t b" x="835" y="194" text-anchor="middle">GPU 계산</text>
+  <path d="M345 214 V250 H95 V214" stroke="var(--mut)" stroke-width="2" fill="none" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+  <text class="m" x="220" y="268" text-anchor="middle">생성한 답(글)을 돌려준다</text>
+  <rect x="244" y="150" width="480" height="76" rx="10" fill="none" stroke="var(--violet)" stroke-width="2" stroke-dasharray="6 5"/>
+  <text class="m" x="484" y="144" text-anchor="middle" style="fill:var(--violet)!important">이 안이 전부 하나의 컨테이너(vLLM) 안에서 돌아간다</text>
+</svg></div>
+<div class="say"><b>이 그림이 말하는 것</b>구조는 같다: "켜 둔 서버가 요청을 받아서 처리하고 답을 돌려준다." 다른 점은 가운데가 HTML 파일이 아니라 <u>GPU 메모리에 올라간 무거운 모델</u>이라는 것이다.</div>
+</section>
+
+<!-- 3 -->
+<section>
+<h2>③ 질문 하나가 처리되는 과정</h2>
+<p class="sub">모델은 답을 "한 번에" 만들지 않고 <b>한 토큰씩</b> 이어서 만든다</p>
+<div class="fig"><svg viewBox="0 0 900 372" role="img" aria-label="프리필과 디코드">
+  <defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--mut)"/></marker></defs>
+  <text class="t b" x="20" y="26">① 질문(프롬프트)을 토큰으로 쪼갠다</text>
+  <g font-size="15">
+    <rect x="20" y="38" width="86" height="38" rx="6" fill="var(--bluebg)" stroke="var(--blue)"/><text class="t" x="63" y="63" text-anchor="middle">쿠버</text>
+    <rect x="112" y="38" width="86" height="38" rx="6" fill="var(--bluebg)" stroke="var(--blue)"/><text class="t" x="155" y="63" text-anchor="middle">네티스</text>
+    <rect x="204" y="38" width="60" height="38" rx="6" fill="var(--bluebg)" stroke="var(--blue)"/><text class="t" x="234" y="63" text-anchor="middle">를</text>
+    <rect x="270" y="38" width="86" height="38" rx="6" fill="var(--bluebg)" stroke="var(--blue)"/><text class="t" x="313" y="63" text-anchor="middle">설명</text>
+    <rect x="362" y="38" width="86" height="38" rx="6" fill="var(--bluebg)" stroke="var(--blue)"/><text class="t" x="405" y="63" text-anchor="middle">해줘</text>
+  </g>
+  <text class="m" x="466" y="62">← 토큰 5개 (한국어는 글자 조각 단위로 나뉘는 경우가 많다)</text>
+
+  <text class="t b" x="20" y="116">② 프리필: 질문 전체를 한꺼번에 읽는다</text>
+  <rect x="20" y="128" width="428" height="46" rx="8" fill="var(--amberbg)" stroke="var(--amber)" stroke-width="2"/><text class="t" x="234" y="157" text-anchor="middle">질문 5개를 한꺼번에 계산 (병렬, 비교적 빠름)</text>
+
+  <text class="t b" x="20" y="212">③ 디코드: 답을 토큰 하나씩 이어서 만든다</text>
+  <g transform="translate(-34,98)">
+    <rect x="500" y="128" width="96" height="46" rx="8" fill="var(--greenbg)" stroke="var(--green)" stroke-width="2"/><text class="t b" x="548" y="156" text-anchor="middle">쿠버네티스는</text>
+    <path d="M596 151H620" stroke="var(--mut)" stroke-width="2" marker-end="url(#ar2)"/>
+    <rect x="620" y="128" width="84" height="46" rx="8" fill="var(--greenbg)" stroke="var(--green)" stroke-width="2"/><text class="t" x="662" y="156" text-anchor="middle">컨테이너를</text>
+    <path d="M704 151H728" stroke="var(--mut)" stroke-width="2" marker-end="url(#ar2)"/>
+    <rect x="728" y="128" width="70" height="46" rx="8" fill="var(--greenbg)" stroke="var(--green)" stroke-width="2"/><text class="t" x="763" y="156" text-anchor="middle">관리</text>
+    <path d="M798 151H820" stroke="var(--mut)" stroke-width="2" marker-end="url(#ar2)"/>
+    <text class="t b" x="832" y="158">…</text>
+  </g>
+  <rect x="20" y="226" width="428" height="44" rx="8" fill="var(--greenbg)" stroke="var(--green)"/><text class="t" x="234" y="254" text-anchor="middle">답이 100토큰이면 계산을 100번 반복 (한 번에 하나)</text>
+  <text class="m" x="466" y="292">↑ 이 과정이 토큰마다 반복된다 → 답이 길수록 시간이 늘어난다</text>
+
+  <path d="M20 326 H562" stroke="var(--red)" stroke-width="3"/><path d="M20 320v12M562 320v12" stroke="var(--red)" stroke-width="3"/>
+  <text class="t b" x="291" y="354" text-anchor="middle" style="fill:var(--red)!important">TTFT = 요청부터 첫 토큰이 나올 때까지</text>
+  <text class="m" x="580" y="332">처리량(tokens/s) = 디코드에서 초당 몇 토큰을 만드나</text>
+</svg></div>
+<div class="say"><b>이 그림이 말하는 것</b>① 질문을 읽는 프리필은 한꺼번에, ② 답을 만드는 디코드는 하나씩이다. 그래서 <u>답이 길수록 오래 걸린다.</u> 사용자가 느끼는 "처음 글자가 뜨는 속도"가 TTFT, 서버가 "초당 만드는 글자 수"가 처리량이다.</div>
+</section>
+
+<!-- 4 -->
+<section>
+<h2>④ GPU 메모리 16GB는 어디에 쓰이나</h2>
+<p class="sub">대략적인 예시입니다 (정확한 숫자는 4번 실습에서 로그로 직접 확인)</p>
+<div class="fig"><svg viewBox="0 0 900 330" role="img" aria-label="GPU 메모리 사용 비교">
+  <text class="m" x="190" y="22">0GB</text><text class="m" x="790" y="22" text-anchor="end">16GB</text>
+  <rect x="190" y="30" width="600" height="2" fill="var(--line)"/>
+
+  <text class="t b" x="20" y="72">3B 모델 (FP16)</text>
+  <rect x="190" y="46" width="225" height="40" fill="var(--blue)"/><text class="t w" x="302" y="72" text-anchor="middle">가중치 약 6GB</text>
+  <rect x="415" y="46" width="262" height="40" fill="var(--green)"/><text class="t w" x="546" y="72" text-anchor="middle">KV cache 넉넉</text>
+  <rect x="677" y="46" width="113" height="40" fill="var(--grey)"/><text class="t w" x="733" y="72" text-anchor="middle">기타</text>
+  <text class="m" x="190" y="106">여유가 커서 동시에 많은 요청을 받을 수 있다</text>
+
+  <text class="t b" x="20" y="162">7B 모델 (FP16)</text>
+  <rect x="190" y="136" width="570" height="40" fill="var(--blue)"/><text class="t w" x="475" y="162" text-anchor="middle">가중치 약 15GB (거의 다 차지)</text>
+  <rect x="760" y="136" width="30" height="40" fill="var(--red)"/>
+  <text class="m" x="190" y="196" style="fill:var(--red)!important">KV cache를 둘 자리가 거의 없다 → 서버가 안 뜨거나 아주 적은 요청만 가능</text>
+
+  <text class="t b" x="20" y="252">7B 모델 (AWQ 4비트)</text>
+  <rect x="190" y="226" width="190" height="40" fill="var(--violet)"/><text class="t w" x="285" y="252" text-anchor="middle">가중치 약 5GB</text>
+  <rect x="380" y="226" width="310" height="40" fill="var(--green)"/><text class="t w" x="535" y="252" text-anchor="middle">KV cache 넉넉</text>
+  <rect x="690" y="226" width="100" height="40" fill="var(--grey)"/><text class="t w" x="740" y="252" text-anchor="middle">기타</text>
+  <text class="m" x="190" y="286">숫자를 4비트로 줄여 같은 7B가 들어간다 (대신 정확도가 약간 떨어질 수 있다)</text>
+
+  <g transform="translate(190,306)"><rect width="14" height="14" fill="var(--blue)"/><text class="m" x="20" y="12">가중치(모델 자체, 고정)</text>
+  <rect x="190" width="14" height="14" fill="var(--green)"/><text class="m" x="210" y="12">KV cache (대화 기억, 동시 요청×길이에 비례)</text></g>
+</svg></div>
+<div class="say"><b>이 그림이 말하는 것</b>메모리는 <u>가중치(고정)</u>와 <u>KV cache(요청이 늘수록 커짐)</u>가 나눠 쓴다. 가중치가 클수록 KV cache 자리가 줄고, 그러면 동시에 받을 수 있는 사람 수가 줄어든다. 그래서 "모델 크기"와 "동시 처리 능력"은 맞바꾸는 관계다.</div>
+<p class="note">막대 길이는 이해를 돕는 대략적 그림이며 실제 값은 모델·설정에 따라 다릅니다.</p>
+</section>
+
+<!-- 5 -->
+<section>
+<h2>⑤ 여러 사람이 동시에 오면</h2>
+<p class="sub">한 명씩 줄 세울까, 묶어서 한꺼번에 계산할까</p>
+<div class="fig"><svg viewBox="0 0 900 290" role="img" aria-label="순차 처리와 배칭 비교">
+  <text class="t b" x="20" y="28">한 명씩 처리 (줄 서기)</text>
+  <rect x="20" y="40" width="140" height="34" rx="6" fill="var(--blue)"/><text class="t w" x="90" y="63" text-anchor="middle">사용자 1</text>
+  <rect x="160" y="40" width="140" height="34" rx="6" fill="var(--green)"/><text class="t w" x="230" y="63" text-anchor="middle">사용자 2</text>
+  <rect x="300" y="40" width="140" height="34" rx="6" fill="var(--violet)"/><text class="t w" x="370" y="63" text-anchor="middle">사용자 3</text>
+  <rect x="440" y="40" width="140" height="34" rx="6" fill="var(--amber)"/><text class="t w" x="510" y="63" text-anchor="middle">사용자 4</text>
+  <text class="t" x="596" y="63">4명이 끝나기까지 4칸</text>
+  <text class="m" x="20" y="96">뒷사람일수록 오래 기다린다 (4번째 사람은 앞의 3명이 끝나야 시작)</text>
+
+  <text class="t b" x="20" y="158">묶어서 처리 (배칭)</text>
+  <rect x="20" y="170" width="150" height="26" rx="5" fill="var(--blue)"/><text class="t w" x="95" y="189" text-anchor="middle">사용자 1</text>
+  <rect x="20" y="198" width="150" height="26" rx="5" fill="var(--green)"/><text class="t w" x="95" y="217" text-anchor="middle">사용자 2</text>
+  <rect x="20" y="226" width="150" height="26" rx="5" fill="var(--violet)"/><text class="t w" x="95" y="245" text-anchor="middle">사용자 3</text>
+  <rect x="20" y="254" width="150" height="26" rx="5" fill="var(--amber)"/><text class="t w" x="95" y="273" text-anchor="middle">사용자 4</text>
+  <text class="t" x="186" y="214">4명이 한꺼번에 시작, 1~1.5칸 정도에 끝 (대략)</text>
+  <text class="m" x="186" y="236">GPU는 여러 요청을 한 번에 계산해도 시간이 크게 늘지 않는 경향이 있다</text>
+  <text class="m" x="186" y="256">그래서 vLLM은 요청을 모아서 함께 계산한다 (continuous batching)</text>
+</svg></div>
+<div class="say"><b>이 그림이 말하는 것</b>서버 한 대로 얼마나 많은 사람을 받을 수 있는지는 <u>요청을 얼마나 잘 묶느냐</u>에 크게 달려 있다. 이게 Step 1 후반의 부하 테스트에서 "동시 요청 1·4·16·64"로 직접 재 볼 내용이다.</div>
+<p class="note">배칭의 효과는 모델·GPU·요청 길이에 따라 달라집니다. 위 칸 수는 이해를 위한 대략적 그림이며, 실제 수치는 실습에서 측정합니다.</p>
+</section>
+
+<!-- 6 -->
+<section>
+<h2>⑥ 그림에서 나온 용어 한눈에</h2>
+<div class="terms">
+  <div class="term"><b>토큰(token)</b>글을 쪼갠 조각. 모델의 계산·과금 단위 (그림 ③)</div>
+  <div class="term"><b>프롬프트</b>사용자가 보낸 질문 (그림 ③의 ①)</div>
+  <div class="term"><b>프리필(prefill)</b>질문 전체를 한꺼번에 읽는 단계 (그림 ③의 ②)</div>
+  <div class="term"><b>디코드(decode)</b>답을 토큰 하나씩 만드는 단계 (그림 ③의 ③)</div>
+  <div class="term"><b>TTFT</b>요청 후 첫 토큰이 나오기까지 시간 = 체감 반응</div>
+  <div class="term"><b>처리량(tokens/s)</b>초당 만드는 토큰 수 = 서버의 총 능력</div>
+  <div class="term"><b>KV cache</b>처리한 토큰의 기억 저장 공간 (그림 ④의 초록)</div>
+  <div class="term"><b>배칭(batching)</b>여러 요청을 묶어 함께 계산 (그림 ⑤)</div>
+</div>
+</section>
+</main>
+</body>
+</html>
